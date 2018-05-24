@@ -10,8 +10,6 @@ https://angular.io/tutorial
 Flexbox - Layout
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
-
-
 **Projekt initialisieren**
 
 - Node.js installieren(evtl npm, sollte aber schon mit drin sein)
