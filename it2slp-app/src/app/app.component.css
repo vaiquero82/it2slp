@@ -3,11 +3,3 @@
   height: 10vh;
   width: 100vw;
 }
-
-.mainview {
-  height: 90vh;
-  width: 100vw;
-  background-color: red;
-  background-image: url('../assets/Future_tech.jpg');
-  background-size: cover;
-}
