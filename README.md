@@ -1,6 +1,15 @@
 # it2slp
 Project for it2
 
+# Folders
+it2slp/src/                 App-Daten
+it2slp/src/app              Root-Component
+it2slp/src/app/line-chart   Diagramm
+it2slp/src/app/mainview     Content
+it2slp/src/app/storage      Vielleicht für Lagerhaltung?
+it2slp/src/app/top-bar      buttonleiste 
+
+
 Angular Quick Start
 https://angular.io/guide/quickstart
 

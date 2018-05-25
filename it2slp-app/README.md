@@ -1,17 +1,5 @@
 # It2slpApp
 
-# Folders
-it2slp/src/                 App-Daten
-it2slp/src/app              Root-Component
-it2slp/src/app/line-chart   Diagramm
-it2slp/src/app/mainview     Content
-it2slp/src/app/storage      Vielleicht für Lagerhaltung?
-it2slp/src/app/top-bar      buttonleiste 
-
-
-
-
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
 ## Development server
