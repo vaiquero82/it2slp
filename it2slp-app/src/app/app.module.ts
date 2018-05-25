@@ -11,11 +11,13 @@ import { ChartsModule } from 'ng2-charts';
 import { ChartModule } from 'angular2-highcharts';
 import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
+export declare let require: any;
+
 export function highchartsFactory() {
-  /*
-  const hc = require('highcharts/highstock');
-  const dd = require('highcharts/modules/exporting');
-  dd(hc);*/
+
+  //const hc = require('highcharts/highstock');
+  //const dd = require('highcharts/modules/exporting');
+  //dd(hc);
   const hc = require('highcharts');
   // var hcs = require('highcharts/highstock');
   const hcm = require('highcharts/highcharts-more');
@@ -43,9 +45,9 @@ export function highchartsFactory() {
     ChartModule
   ],
   providers: [{
-      provide: HighchartsStatic,
-      useFactory: highchartsFactory
-    }],
+    provide: HighchartsStatic,
+    useFactory: highchartsFactory
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
