@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
-  selectedView: String = 'teamDPI';
+  selectedView: String = 'line-chart';
+  @Output() activeView: EventEmitter<String> = new EventEmitter<String>();
 
   constructor() { }
 
@@ -16,5 +17,6 @@ export class TopBarComponent implements OnInit {
 
   onSelect(value: String): void {
     this.selectedView = value;
+    this.activeView.emit(value);
   }
 }

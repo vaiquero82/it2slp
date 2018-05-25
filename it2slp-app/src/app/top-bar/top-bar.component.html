@@ -1,10 +1,4 @@
 <div class="bar">
   <button class="btn btn-outline-primary barButton" (click)="onSelect('line-chart')">line-chart</button>
   <button class="btn btn-outline-primary barButton" (click)="onSelect('storage')">storage</button>
-
-</div>
-
-<div class="view" [ngSwitch]="selectedView">
-<line-chart class="lineChart" *ngSwitchCase="'line-chart'"></line-chart>
-<storage class="storage" *ngSwitchCase="'storage'"></storage>
 </div>

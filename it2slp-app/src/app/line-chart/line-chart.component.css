@@ -1,3 +1,9 @@
 .line-chart {
   color: red;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  top: 0px;
+  left: 0px;
+  height: 45rem;
+  width: 100vw;
 }

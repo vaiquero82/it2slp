@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  selectedView: String = 'line-chart';
+
+  public rcvText(value): void {
+    this.selectedView = value;
+  }
 }
