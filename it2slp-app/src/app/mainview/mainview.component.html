@@ -1,5 +1,5 @@
 <div class="mainviewContainer">
-  <div class="view" [ngSwitch]="selectedView">
+  <div id="graphsId" class="view" [ngSwitch]="selectedView">
     <line-chart class="lineChart" *ngSwitchCase="'line-chart'"></line-chart>
     <storage class="storage" *ngSwitchCase="'storage'"></storage>
   </div>
