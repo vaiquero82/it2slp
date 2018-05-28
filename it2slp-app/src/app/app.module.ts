@@ -7,6 +7,8 @@ import { LineChartComponent } from './line-chart/line-chart.component';
 import { StorageComponent } from './storage/storage.component';
 import { MainviewComponent } from './mainview/mainview.component';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartModule } from 'angular2-highcharts';
@@ -45,7 +47,8 @@ export function highchartsFactory() {
     ChartsModule,
     ChartModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    Ng2GoogleChartsModule
   ],
   providers: [{
     provide: HighchartsStatic,

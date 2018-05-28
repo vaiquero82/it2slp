@@ -1,3 +1,6 @@
 <div class="line-chart-container">
-  <chart class="line-chart"[options]="options" (load)="saveChart($event.context)"></chart>
+  <google-chart [data]="pieChartData"></google-chart>
+  <google-chart [data]="lineChart"></google-chart>
+  <google-chart [data]="gaugeChartData"></google-chart>
+  <google-chart [data]="gaugeChartData"></google-chart>
 </div>

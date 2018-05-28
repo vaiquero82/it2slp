@@ -18,201 +18,69 @@ export class LineChartComponent implements OnInit {
   options: Object;
   chart;
   c;
+  pieChartData =  {
+    chartType: 'PieChart',
+    dataTable: [
+      ['City', '2010 Population', '2000 Population'],
+      ['New York City, NY', 8175000, 8008000],
+      ['Los Angeles, CA', 3792000, 3694000],
+      ['Chicago, IL', 2695000, 2896000],
+      ['Houston, TX', 2099000, 1953000],
+      ['Philadelphia, PA', 1526000, 1517000]
+    ],
+    options: {
+      title: 'Population of Largest U.S. Cities',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Total Population',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'City'
+        }
+    },
+  };
+
+  public gaugeChartData =  {
+    chartType: 'Gauge',
+    dataTable: [
+      ['Label', 'Value'],
+      ['Value', 1.78]
+    ],
+    options: {
+      animation: {easing: 'out'},
+      width: 150, height: 150,
+      greenFrom: 1, greenTo: 4,
+      minorTicks: 5,
+      min: 0, max: 5,
+      majorTicks: ['0', '1', '2', '3', '4', '5'],
+      greenColor: '#d0e9c6'
+    }
+  };
+
+  lineChart = {
+    chartType: 'ColumnChart',
+    dataTable: [
+      ['Task', 'Hours per Day'],
+      ['Work',     11],
+      ['Eat',      2],
+      ['Commute',  2],
+      ['Watch TV', 2],
+      ['Sleep',    7]
+    ],
+    options: {'title': 'Tasks'},
+
+  };
 
   constructor() {
-
-    var rect = document.getElementById('graphsId').getBoundingClientRect();
-    var w = rect.width * 0.5;
-    var h = rect.height * 0.5;
-
-    var data1 = [ 1, 2, 3, 4, 5 ];
-    var data2 = [ 11, 21, 31, 41, 51 ];
-    var data3 = [ 111, 211, 311, 411, 511 ];
-
-    this.options = {
-      credits: {
-        enabled: false
-      },
-      exporting: {
-        enabled: false
-      },
-      chart: {
-        type: 'spline',
-        height: h,
-        width: w
-      },
-      title: {
-        text: 'Schmiermittelfüllstand'
-      },
-      xAxis: {
-        type: 'datetime',
-        labels: {
-          overflow: 'justify',
-          enabled: false
-        }
-      },
-      yAxis: {
-        tickInterval: 20,
-        title: {
-          text: '%'
-        },
-        min: 0,
-        max: 100,
-        minorGridLineWidth: 0,
-        gridLineWidth: 0,
-        alternateGridColor: null,
-        plotBands: [{ // Light air
-          from: 0,
-          to: 19,
-          color: 'rgba(255, 0, 0, 1)',
-          label: {
-            text: 'too Low',
-            style: {
-              color: '#606060'
-            }
-          }
-        }, { // Light breeze
-          from: 20,
-          to: 39,
-          color: 'rgba(255, 140, 0, 1)',
-          label: {
-            text: 'change me',
-            style: {
-              color: '#606060'
-            }
-          }
-        }, { // Gentle breeze
-          from: 40,
-          to: 59,
-          color: 'rgba(255, 255, 0, 1)',
-          label: {
-            text: 'i can work',
-            style: {
-              color: '#606060'
-            }
-          }
-        }, { // Gentle breeze
-          from: 60,
-          to: 79,
-          color: 'rgba(168, 255, 0, 1)',
-          label: {
-            text: 'almost full',
-            style: {
-              color: '#606060'
-            }
-          }
-        }, { // Gentle breeze
-          from: 80,
-          to: 100,
-          color: 'rgba(0, 136, 0, 1)',
-          label: {
-            text: 'Full',
-            style: {
-              color: '#606060'
-            }
-          }
-        }]
-      },
-      tooltip: {
-        enabled: false,
-        valueSuffix: 'dpi'
-      },
-      plotOptions: {
-        spline: {
-          lineWidth: 3,
-          states: {
-            hover: {
-              enabled: false
-            }
-          },
-          marker: {
-            enabled: false
-          },
-          pointInterval: 3600000, // one hour
-          pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
-        }
-      },
-      series: [{
-        name: 'Kartusche 1',
-        data: data1,
-        color: 'rgba(128, 0, 128, 1)'
-      }, {
-        name: 'Kartusche 2',
-        data: data2,
-        color: 'rgba(61, 124, 183, 1)'
-      }, {
-        name: 'KArtusche 3',
-        data: data3,
-        color: 'rgba(0, 0, 0, 1)'
-      }],
-      navigation: {
-        menuItemStyle: {
-          fontSize: '10px'
-        }
-      }/*,
-      responsive: {
-        rules: [{
-          condition: {
-            maxWidth: 600
-          },
-          chartOptions: {
-            legend: {
-              align: 'center',
-              verticalAlign: 'bottom',
-              layout: 'horizontal'
-            },
-            yAxis: {
-              labels: {
-                align: 'left',
-                x: 0,
-                y: -5
-              },
-              title: {
-                text: null
-              }
-            },
-            subtitle: {
-              text: null
-            },
-            credits: {
-              enabled: false
-            }
-          }
-        }]
-      }*/
-    };
 
    }
 
   ngOnInit() {
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    var rect = document.getElementById('graphsId').getBoundingClientRect();
-    var w = rect.width * 0.5;
-    var h = rect.height * 0.5;
-    this.chart.setSize(w, h);
-    //setInterval(this.onChange.bind(this),1000);
-  }
 
-  saveChart(chart) {
-    this.chart = chart;
-    this.c = chart.series;
-  }
-
-  public onChange(dpiRes): void {
-    var series = this.chart.series;
-
-    var arrD = [2, 3];
-    var arrM = [4, 5];
-    var arrO = [7, 8];
-
-
-
-    series[0].setData(arrD, false, false, true);
-
-    series[1].setData(arrM, false, false, true);
-    series[2].setData(arrO, false, false, true);
-    this.chart.redraw();
   }
 }
