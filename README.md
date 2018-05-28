@@ -1,6 +1,12 @@
 # IT2SLP      changed for commit-jira-test                  
 Project for it2
 
+# Charts
+https://github.com/gmazzamuto/ng2-google-charts
+
+# Material Style
+https://material.angular.io/
+
 
 # Folders
 `it2slp/src/`                 App-Daten
