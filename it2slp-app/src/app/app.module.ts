@@ -6,6 +6,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { StorageComponent } from './storage/storage.component';
 import { MainviewComponent } from './mainview/mainview.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartModule } from 'angular2-highcharts';
@@ -42,7 +43,9 @@ export function highchartsFactory() {
   imports: [
     BrowserModule,
     ChartsModule,
-    ChartModule
+    ChartModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [{
     provide: HighchartsStatic,
