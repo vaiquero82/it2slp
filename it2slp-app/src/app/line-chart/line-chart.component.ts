@@ -1,6 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ChartModule } from 'angular2-highcharts';
-import 'highcharts/adapters/standalone-framework.src';
 // tslint:disable-next-line:import-blacklist
 // import { Observable, Subscriber} from 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
@@ -30,7 +28,9 @@ export class LineChartComponent implements OnInit {
     ],
     options: {
       title: 'Population of Largest U.S. Cities',
-        chartArea: {width: '50%'},
+       /* chartArea: {width: '70%'},*/
+
+       width: 600, height: 300,
         hAxis: {
           title: 'Total Population',
           minValue: 0
@@ -49,7 +49,7 @@ export class LineChartComponent implements OnInit {
     ],
     options: {
       animation: {easing: 'out'},
-      width: 150, height: 150,
+      width: 120, height: 120,
       greenFrom: 1, greenTo: 4,
       minorTicks: 5,
       min: 0, max: 5,
@@ -68,9 +68,27 @@ export class LineChartComponent implements OnInit {
       ['Watch TV', 2],
       ['Sleep',    7]
     ],
-    options: {'title': 'Tasks'},
+    options: {
+      title: 'Tasks',
+      width: 600, height: 300,
+    },
+
 
   };
+
+  public timelineChartData =  {
+    chartType: 'Timeline',
+    dataTable: [
+      ['Name', 'From', 'To'],
+      [ 'Washington', new Date(1789, 3, 30), new Date(1797, 2, 4) ],
+      [ 'Adams',      new Date(1797, 2, 4),  new Date(1801, 2, 4) ],
+      [ 'Jefferson',  new Date(1801, 2, 4),  new Date(1809, 2, 4) ]
+    ],
+    options: {
+      title: 'Countries', width: 600, height: 300, allowHtml: true,
+    }
+ };
+
 
   constructor() {
 
