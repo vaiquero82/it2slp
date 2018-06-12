@@ -71,7 +71,8 @@ export class MainviewComponent implements OnInit {
   }
 
   computePrediction(x) {
-    this.computedPredictiveValue =  Math.pow((x - (x * 0.4)), 10);
+    this.computedPredictiveValue =  Math.pow((x - (x * 0.4)), Math.exp(1));
+
   }
 
 
