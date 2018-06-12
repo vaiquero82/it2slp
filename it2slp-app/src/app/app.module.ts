@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -14,9 +15,16 @@ import {MatButtonModule,
         MatToolbarRow,
         MatIcon,
         MatTabsModule,
+        MatInputModule,
+        MatCardModule
         } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { AppRoutingModule } from './/app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { PurchaseDepartmentViewComponent } from './purchase-department-view/purchase-department-view.component';
+import { ServiceLeaderViewComponent } from './service-leader-view/service-leader-view.component';
+import { ServiceEngineerViewComponent } from './service-engineer-view/service-engineer-view.component';
 
 
 export declare let require: any;
@@ -29,16 +37,24 @@ export declare let require: any;
     TopBarComponent,
     LineChartComponent,
     StorageComponent,
-    MainviewComponent
+    MainviewComponent,
+    LoginComponent,
+    PurchaseDepartmentViewComponent,
+    ServiceLeaderViewComponent,
+    ServiceEngineerViewComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
     MatTabsModule,
-    Ng2GoogleChartsModule
+    Ng2GoogleChartsModule,
+    AppRoutingModule,
+    MatInputModule,
+    MatCardModule
   ],
 
   bootstrap: [AppComponent]

@@ -61,9 +61,10 @@ const SECRET = 'Tvu8RIY28AXY+45Dt05TeQQg5PM1y2Bn64qMqAYH';
       }
       };
     // const pred = machineLearning.PredictEndpoint();
+    /*
     const pred2 = machineLearning.predict(params);
     console.log(inspect(pred2));
-    console.log(JSON.stringify({ data: pred2}, null, 4));
+    console.log(JSON.stringify({ data: pred2}, null, 4));*/
 
 
   }
