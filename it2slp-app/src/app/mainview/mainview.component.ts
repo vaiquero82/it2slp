@@ -18,6 +18,8 @@ import * as inspect from 'util-inspect';
 export class MainviewComponent implements OnInit {
 
   @Input() selectedView: String;
+  predictiveValue = 0.0;
+  computedPredictiveValue = 0.0;
   public c: AWS.Config;
 
 
@@ -30,8 +32,12 @@ export class MainviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    AWS.config.update({
+    accessKeyId: 'AKIAJRMNBD4KBEYO34EQ',
+      secretAccessKey: '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',
+      region: 'us-east-1'
+    });
     const machineLearning = new AWS.MachineLearning();
-    /*
     const params = {
     MLModelId: 'ml-hoX2IVaQNFv',
     PredictEndpoint: 'https://realtime.machinelearning.us-east-1.amazonaws.com',
@@ -45,29 +51,29 @@ export class MainviewComponent implements OnInit {
     'warningsState': '0',
     'timeSinceLastGreaseInSeconds': '3'
     }
-    };*/
-    const AKID = 'AKIAJVMIBHKSHGFAS3BQ';
-const SECRET = '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';
+    };
 
 
-    const params = {
-      MLModelId: 'ml-bqJdgMA9Ikr',
-      PredictEndpoint: 'https://realtime.machinelearning.eu-west-1.amazonaws.com',
-      accessKeyId: AKID,
-      secretAccessKey: SECRET,
-      region: 'eu-west-1',
-      Record: {
-      'y': '',
-      }
-      };
-    // const pred = machineLearning.PredictEndpoint();
-    /*
-    const pred2 = machineLearning.predict(params);
-    console.log(inspect(pred2));
-    console.log(JSON.stringify({ data: pred2}, null, 4));*/
 
 
+    machineLearning.predict(params, this.savePrediction.bind(this));
   }
+
+
+
+  savePrediction(err, data) {
+    if (err) {
+      console.log(err, err.stack);
+    } else {
+      this.predictiveValue =  data.Prediction.predictedValue;
+      this.computePrediction(this.predictiveValue);
+    }
+  }
+
+  computePrediction(x) {
+    this.computedPredictiveValue =  Math.pow((x - (x * 0.4)), 10);
+  }
+
 
 
 

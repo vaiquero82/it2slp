@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'storage', component: StorageComponent },
   { path: 'purchaseview', component: PurchaseDepartmentViewComponent },
   { path: 'serviceleadview', component: ServiceLeaderViewComponent },
-  { path: 'serviceengineerview', component: ServiceEngineerViewComponent }
+  { path: 'serviceengineerview', component: ServiceEngineerViewComponent },
+  { path: 'mainview', component: MainviewComponent }
 ];
 
 @NgModule({

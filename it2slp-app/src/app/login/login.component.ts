@@ -30,5 +30,9 @@ export class LoginComponent implements OnInit {
         console.log('Success');
         this.router.navigate(['./purchaseview']);
       }
+      if (this.user === 'main' && this.pass === 'main' ) {
+        console.log('Success');
+        this.router.navigate(['./mainview']);
+      }
   }
 }

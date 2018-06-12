@@ -1,6 +1,9 @@
 <div class="mainviewContainer">
-  <div id="graphsId" class="view" [ngSwitch]="selectedView">
-    <line-chart class="lineChart" *ngSwitchCase="'line-chart'"></line-chart>
-    <storage class="storage" *ngSwitchCase="'storage'"></storage>
-  </div>
+  Predictive Value = {{predictiveValue}}
+<br>
+  computedPredictiveValue Math.pow((x - (x * 0.4)), 10) = {{computedPredictiveValue}}
+
 </div>
+
+
+<button class="btn btn-outline-primary" (click)="ngOnInit()" style="position: absolute; top: 200px; left: 100px;">Get Prediction</button>
