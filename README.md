@@ -46,7 +46,7 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 git repo holen, es wirdalso das gib repo lokal angelegt
 
-`$git clone https://github.com/vaiquero82/sash.git`
+`$git clone https://github.com/vaiquero82/it2slp`
 
 - aktuellen stand pullen(im root verzeichnis ausführen)
 
