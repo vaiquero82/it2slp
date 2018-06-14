@@ -8,16 +8,21 @@ https://github.com/gmazzamuto/ng2-google-charts
 https://material.angular.io/
 
 
+Navigation/Routing  siehe `app-routing.module.ts`
+
+# Folders
+
+<deprecated, muss angepasst werden>
 # Folders
 `it2slp/src/`                 App-Daten
 
 `it2slp/src/app`              Root-Component
 
+`it2slp/src/app`              Root-Component
+
 `it2slp/src/app/line-chart`   Diagramm
 
-`it2slp/src/app/mainview`     Content
-
-`it2slp/src/app/storage `     Vielleicht für Lagerhaltung?
+`it2slp/src/app/mainview`     Beispiel implementierung für AWS Machine LEarning
 
 `it2slp/src/app/top-bar`      buttonleiste 
 
