@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -46,6 +48,8 @@ export declare let require: any;
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -55,6 +59,9 @@ export declare let require: any;
     AppRoutingModule,
     MatInputModule,
     MatCardModule
+  ],
+  providers: [
+    HttpClientModule
   ],
 
   bootstrap: [AppComponent]

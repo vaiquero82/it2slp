@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({
@@ -12,27 +14,13 @@ export class LoginComponent implements OnInit {
   @Input() user;
   @Input() pass;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private dataService: DataService, private authService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   submit(m: String) {
-      if (this.user === 'leiter' && this.pass === 'leiter' ) {
-        console.log('Success');
-        this.router.navigate(['./serviceleadview']);
-      }
-      if (this.user === 'techniker' && this.pass === 'techniker' ) {
-        console.log('Success');
-        this.router.navigate(['./serviceengineerview']);
-      }
-      if (this.user === 'einkauf' && this.pass === 'einkauf' ) {
-        console.log('Success');
-        this.router.navigate(['./purchaseview']);
-      }
-      if (this.user === 'main' && this.pass === 'main' ) {
-        console.log('Success');
-        this.router.navigate(['./mainview']);
-      }
+      const x = this.authService.authenticate(this.user, this.pass);
+      console.log(x);
   }
 }
