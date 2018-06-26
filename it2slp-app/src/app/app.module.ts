@@ -18,7 +18,8 @@ import {MatButtonModule,
         MatIcon,
         MatTabsModule,
         MatInputModule,
-        MatCardModule
+        MatCardModule,
+        MatNativeDateModule
         } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -27,6 +28,9 @@ import { LoginComponent } from './login/login.component';
 import { PurchaseDepartmentViewComponent } from './purchase-department-view/purchase-department-view.component';
 import { ServiceLeaderViewComponent } from './service-leader-view/service-leader-view.component';
 import { ServiceEngineerViewComponent } from './service-engineer-view/service-engineer-view.component';
+import { MatSelectModule } from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 export declare let require: any;
@@ -58,7 +62,11 @@ export declare let require: any;
     Ng2GoogleChartsModule,
     AppRoutingModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     HttpClientModule

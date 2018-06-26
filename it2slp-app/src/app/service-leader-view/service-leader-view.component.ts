@@ -1,9 +1,12 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+
 // tslint:disable-next-line:import-blacklist
 // import { Observable, Subscriber} from 'rxjs/Rx';
 // tslint:disable-next-line:import-blacklist
 // import 'rxjs/Rx';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { EngineerService } from '../services/engineer.service';
+import { Engineer } from '../services/engineer';
 
 @Component({
   selector: 'app-service-leader-view',
@@ -11,6 +14,11 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
   styleUrls: ['./service-leader-view.component.css']
 })
 export class ServiceLeaderViewComponent implements OnInit {
+    engineers: Engineer[];
+    selected = null;
+    selectedKartusche = null;
+    myDate = new Date();
+
 
   title = 'line-chart';
   options: Object;
@@ -90,8 +98,8 @@ export class ServiceLeaderViewComponent implements OnInit {
  };
 
 
-  constructor() {
-
+  constructor(private EngService: EngineerService) {
+    this.engineers = EngService.getEngineers();
    }
 
   ngOnInit() {
@@ -101,5 +109,12 @@ export class ServiceLeaderViewComponent implements OnInit {
   ngAfterViewInit() {
 
   }
+
+
+  doMail(engineer: Engineer) {
+    console.log(this.myDate);
+    // tslint:disable-next-line:max-line-length
+    location.href = 'mailto:' + engineer.email + '?subject=Service Task&body=Kartusche ' + this.selectedKartusche + ' bis spätestens ' + this.myDate + ' .';
+}
 
 }
