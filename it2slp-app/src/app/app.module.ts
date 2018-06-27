@@ -29,8 +29,9 @@ import { PurchaseDepartmentViewComponent } from './purchase-department-view/purc
 import { ServiceLeaderViewComponent } from './service-leader-view/service-leader-view.component';
 import { ServiceEngineerViewComponent } from './service-engineer-view/service-engineer-view.component';
 import { MatSelectModule } from '@angular/material/select';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 
 export declare let require: any;
@@ -66,7 +67,8 @@ export declare let require: any;
     MatSelectModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    AmazingTimePickerModule
   ],
   providers: [
     HttpClientModule

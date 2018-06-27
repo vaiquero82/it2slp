@@ -12,6 +12,11 @@
   margin: 0.5rem;
 }
 
+input.timepicker {
+  background-color: transparent;
+  border: 0px solid;
+}
+
 .container-sub-top {
   position: relative;
   background-color: steelblue;

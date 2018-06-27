@@ -20,6 +20,9 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       </div>
+      <div>
+        <input class="timepicker"atp-time-picker [(ngModel)]="timevalue"/>
+      </div>
 
   </mat-form-field>
   <button mat-raised-button class="buttonRaised" color="primary" *ngIf="selected" (click)="doMail(selected)">Kartusche wechseln</button>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 
 // tslint:disable-next-line:import-blacklist
 // import { Observable, Subscriber} from 'rxjs/Rx';
@@ -18,6 +18,7 @@ export class ServiceLeaderViewComponent implements OnInit {
     selected = null;
     selectedKartusche = null;
     myDate = new Date();
+    timevalue = '19:00';
 
 
   title = 'line-chart';
@@ -107,12 +108,15 @@ export class ServiceLeaderViewComponent implements OnInit {
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-
   }
 
 
   doMail(engineer: Engineer) {
+    const time = this.timevalue.split(':');
+    this.myDate.setHours(Number(time[0]));
+    this.myDate.setMinutes(Number(time[1]));
     console.log(this.myDate);
+
     // tslint:disable-next-line:max-line-length
     location.href = 'mailto:' + engineer.email + '?subject=Service Task&body=Kartusche ' + this.selectedKartusche + ' bis spätestens ' + this.myDate + ' .';
 }
