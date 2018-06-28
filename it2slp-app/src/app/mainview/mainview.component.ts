@@ -33,8 +33,8 @@ export class MainviewComponent implements OnInit {
 
   ngOnInit() {
     AWS.config.update({
-    accessKeyId: 'AKIAJRMNBD4KBEYO34EQ',
-      secretAccessKey: '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',
+    accessKeyId: '*',
+      secretAccessKey: '*',
       region: 'us-east-1'
     });
     const machineLearning = new AWS.MachineLearning();
