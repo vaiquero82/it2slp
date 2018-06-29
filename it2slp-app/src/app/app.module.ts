@@ -23,6 +23,8 @@ import {MatButtonModule,
         MatGridListModule,
         MatTableModule
         } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatDividerModule} from '@angular/material/divider';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { AppRoutingModule } from './/app-routing.module';
@@ -34,6 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
+
 
 
 export declare let require: any;
@@ -72,7 +75,10 @@ export declare let require: any;
     MatNativeDateModule,
     AmazingTimePickerModule,
     MatGridListModule,
-    MatTableModule
+    MatTableModule,
+    MatDividerModule,
+    BrowserModule,
+    FlexLayoutModule
   ],
   providers: [
     HttpClientModule

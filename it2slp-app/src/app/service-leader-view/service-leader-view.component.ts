@@ -14,6 +14,18 @@ import { Engineer } from '../services/engineer';
   styleUrls: ['./service-leader-view.component.css']
 })
 export class ServiceLeaderViewComponent implements OnInit {
+  /*tiles: Tile[] = [
+    {text: 'One', cols: 9, rows: 6, color: 'lightblue'},
+    {text: 'Two', cols: 9, rows: 6, color: 'lightgreen'},
+    {text: '<google-chart class="gauge" [data]="gaugeChartData"></google-chart>', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+  ];*/
+
+
     engineers: Engineer[];
     selected = null;
     selectedKartusche = null;
@@ -121,4 +133,14 @@ export class ServiceLeaderViewComponent implements OnInit {
     location.href = 'mailto:' + engineer.email + '?subject=Service Task&body=Kartusche ' + this.selectedKartusche + ' bis spätestens ' + this.myDate + ' .';
 }
 
+
+
 }
+
+
+/*export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}*/

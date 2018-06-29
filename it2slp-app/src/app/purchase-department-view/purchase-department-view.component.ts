@@ -45,7 +45,7 @@ const companies_data: companies[] = [
 export class PurchaseDepartmentViewComponent implements OnInit {
   displayedColumns: string[] = ['nr', 'name', 'anzahl', 'termin'];
   dataSource = tasks_data;
-  displayedColumns2: string[] = ['name', 'level', 'perc'];
+  displayedColumns2: string[] = ['name', 'level', 'perc', 'action'];
   dataSource2 = companies_data;
   constructor() { }
 
