@@ -19,7 +19,9 @@ import {MatButtonModule,
         MatTabsModule,
         MatInputModule,
         MatCardModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatGridListModule,
+        MatTableModule
         } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
@@ -68,7 +70,9 @@ export declare let require: any;
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    MatGridListModule,
+    MatTableModule
   ],
   providers: [
     HttpClientModule

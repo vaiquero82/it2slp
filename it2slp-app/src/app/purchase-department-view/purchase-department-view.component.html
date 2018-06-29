@@ -1,73 +1,74 @@
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile>
     <h3>Übersicht der Aufträge</h3>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
-      
+
         <!-- Auftragsnummer Column -->
         <ng-container matColumnDef="nr">
           <th mat-header-cell *matHeaderCellDef> Nr. </th>
-          <td mat-cell *matCellDef="let element"> {{tasks.nr}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.nr}} </td>
         </ng-container>
-      
+
         <!-- Firmenname Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Firma </th>
-          <td mat-cell *matCellDef="let element"> {{tasks.name}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
-      
+
         <!-- Anzahl Column -->
         <ng-container matColumnDef="anzahl">
           <th mat-header-cell *matHeaderCellDef> Anzahl </th>
-          <td mat-cell *matCellDef="let element"> {{tasks.anzahl}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.anzahl}} </td>
         </ng-container>
-      
+
         <!-- Termin Column -->
         <ng-container matColumnDef="termin">
           <th mat-header-cell *matHeaderCellDef> Termin </th>
-          <td mat-cell *matCellDef="let element"> {{tasks.termin}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.termin}} </td>
         </ng-container>
-      
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+    </mat-table>
 
 
 
 
   </mat-grid-tile>
+
   <mat-grid-tile>
-      <h3>Lagerstand Kunden</h3>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <h3>Lagerstand Kunden</h3>
+    <mat-table #table [dataSource]="dataSource2" class="mat-elevation-z8">
 
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-        
-          <!-- Firma Column -->
-          <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Firma </th>
-            <td mat-cell *matCellDef="let element"> {{companies.name}} </td>
-          </ng-container>
-        
-          <!-- Level Column -->
-          <ng-container matColumnDef="level">
-            <th mat-header-cell *matHeaderCellDef> Füllstand </th>
-            <td mat-cell *matCellDef="let element"> {{companies.level}} </td>
-          </ng-container>
-        
-          <!-- Prozent Column -->
-          <ng-container matColumnDef="perc">
-            <th mat-header-cell *matHeaderCellDef> Prozent </th>
-            <td mat-cell *matCellDef="let element"> {{companies.perc}} </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Firma Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Firma </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Level Column -->
+        <ng-container matColumnDef="level">
+          <th mat-header-cell *matHeaderCellDef> Füllstand </th>
+          <td mat-cell *matCellDef="let element"> {{element.level}} </td>
+        </ng-container>
+
+        <!-- Prozent Column -->
+        <ng-container matColumnDef="perc">
+          <th mat-header-cell *matHeaderCellDef> Prozent </th>
+          <td mat-cell *matCellDef="let element"> {{element.perc}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </mat-table>
 
 
 
-  </mat-grid-tile>
+</mat-grid-tile>
 </mat-grid-list>
