@@ -15,7 +15,7 @@ import {MatButtonModule,
         MatToolbarBase,
         MatToolbarModule,
         MatToolbarRow,
-        MatIcon,
+        MatIconModule,
         MatTabsModule,
         MatInputModule,
         MatCardModule,
@@ -44,7 +44,6 @@ export declare let require: any;
 
 @NgModule({
   declarations: [
-    MatIcon,
     AppComponent,
     TopBarComponent,
     LineChartComponent,
@@ -61,6 +60,7 @@ export declare let require: any;
     HttpModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
