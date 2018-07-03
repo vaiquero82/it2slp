@@ -1,0 +1,16 @@
+<!--
+<div class="bar">
+  <button class="btn btn-outline-primary barButton" (click)="onSelect('line-chart')">line-chart</button>
+  <button class="btn btn-outline-primary barButton" (click)="onSelect('storage')">storage</button>
+  <button class="barButton" mat-button color="primary"  (click)="onSelect('line-chart')">line-chart</button>
+  <button class="barButton" mat-button color="primary" (click)="onSelect('storage')">storage</button>
+</div> -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>IT2 - Smart Lubrication</span>
+    <span class="example-spacer"></span>
+   <!-- <mat-icon class="example-icon" routerLink="/linechart">assessment</mat-icon>
+    <mat-icon class="example-icon" routerLink="/storage">input</mat-icon>-->
+    <mat-icon class="example-icon" (click)="goBack()">reply</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>

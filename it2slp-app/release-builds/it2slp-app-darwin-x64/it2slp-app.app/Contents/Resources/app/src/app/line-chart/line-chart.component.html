@@ -1,0 +1,25 @@
+<div class="row-container container">
+  <div> Chart 1
+    <google-chart [data]="lineChart"></google-chart>
+    Chart 2
+    <google-chart [data]="timelineChartData"></google-chart>
+  </div>
+  <div class="column-container"> Chart 3
+      <div class="row-container container">
+    <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
+    <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
+    </div>
+    <div class="row-container container">
+      <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
+      <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
+    </div>
+
+    <div class="row-container container">
+        <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
+        <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
+    </div>
+  </div>
+
+
+
+</div>

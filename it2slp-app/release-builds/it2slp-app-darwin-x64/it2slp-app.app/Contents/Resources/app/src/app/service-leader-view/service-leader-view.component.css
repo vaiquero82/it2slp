@@ -1,0 +1,106 @@
+.row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttonRaised {
+  width: 14rem;
+  height: 2.5rem;
+  margin:0.5rem;
+}
+.item {
+  margin: 0.5rem;
+}
+
+input.timepicker {
+  background-color: transparent;
+  border: 0px solid;
+}
+
+.container-sub-top {
+  position: relative;
+  background-color: steelblue;
+  top: 0px;
+  left: 0px;
+  padding-left: 2rem;
+}
+
+.container-charts {
+  color: red;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  top: 0px;
+  left: 0px;
+  padding-top: 2rem;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.line-chart {
+
+}
+
+.gauge {
+  margin: 1rem;
+}
+
+.table {
+  color: black;
+}
+
+
+.bold-green-font {
+  font-weight: bold;
+  color: green;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
+.right-text {
+  text-align: right;
+}
+
+.large-font {
+  font-size: 15px;
+}
+
+.italic-darkblue-font {
+  font-style: italic;
+  color: darkblue;
+}
+
+.italic-purple-font {
+  font-style: italic;
+  color: purple;
+}
+
+.underline-blue-font {
+  text-decoration: underline;
+  color: blue;
+}
+
+.gold-border {
+  border: 3px solid gold;
+}
+
+.deeppink-border {
+  border: 3px solid deeppink;
+}
+
+.orange-background {
+  background-color: orange;
+}
+
+.orchid-background {
+  background-color: orchid;
+}
+
+.beige-background {
+  background-color: beige;
+}
+
