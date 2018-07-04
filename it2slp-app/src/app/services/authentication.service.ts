@@ -16,9 +16,14 @@ export class AuthenticationService {
       this.router.navigate(['./serviceleadview']);
       return true;
     }
-    if (user === 'techniker' && pass === 'techniker' ) {
+    if (user === 'Schmidt' && pass === 'Schmidt' ) {
       console.log('Success');
-      this.router.navigate(['./serviceengineerview']);
+      this.router.navigate(['./serviceengineerview', user]);
+      return true;
+    }
+    if (user === 'Muster' && pass === 'Muster' ) {
+      console.log('Success');
+      this.router.navigate(['./serviceengineerview', user]);
       return true;
     }
     if (user === 'einkauf' && pass === 'einkauf' ) {

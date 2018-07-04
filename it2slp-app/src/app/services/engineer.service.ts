@@ -1,16 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Engineer } from './engineer';
+import { ServiceTask } from './servicetask';
+import { Time } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EngineerService {
+  t11: ServiceTask = {
+    id: 1,
+    datetime: new Date(),
+    time: '19:30',
+    task: 'Kartusche 5 Wechseln',
+    done: false
+  };
+  t12: ServiceTask = {
+    id: 2,
+    datetime: Date.now(),
+    time: '13:00',
+    task: 'Kartusche 4 Wechseln',
+    done: false
+  };
+
+  tasklist1 = [this.t11, this.t12];
+  tasklist2 = [this.t11, this.t12];
+
+
   e1: Engineer = {
     id : 1,
     firstName : 'Stefan',
     lastName : 'Schmidt',
     email: 'Stefan.Schmidt@race.de',
-    tasklist : [],
+    tasklist:  this.tasklist1
     };
 
     e2: Engineer = {
@@ -18,7 +39,7 @@ export class EngineerService {
       firstName : 'Max',
       lastName : 'Muster',
       email: 'Max.Muster@race.de',
-      tasklist : [],
+      tasklist : this.tasklist2,
       };
 
   engineers: Engineer[] = [];

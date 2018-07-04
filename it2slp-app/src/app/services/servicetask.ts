@@ -2,8 +2,8 @@ import { Time } from '@angular/common';
 
 export class ServiceTask {
   id: number;
-  date: Date;
-  time: Time;
+  datetime: any;
+  time: string;
   task: string;
   done: boolean;
 }

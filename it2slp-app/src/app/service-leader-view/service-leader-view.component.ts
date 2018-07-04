@@ -7,6 +7,7 @@ import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { EngineerService } from '../services/engineer.service';
 import { Engineer } from '../services/engineer';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-service-leader-view',
@@ -31,6 +32,8 @@ export class ServiceLeaderViewComponent implements OnInit {
     selectedKartusche = null;
     myDate = new Date();
     timevalue = '19:00';
+    data;
+    dataX: JSON;
 
 
   title = 'line-chart';
@@ -111,17 +114,30 @@ export class ServiceLeaderViewComponent implements OnInit {
  };
 
 
-  constructor(private EngService: EngineerService) {
+  constructor(private EngService: EngineerService, private dataService: DataService) {
     this.engineers = EngService.getEngineers();
+    console.log('First' + this.dataService.getDataSchmierstelleLinearAchseX());
    }
 
   ngOnInit() {
+    this.data = this.dataService.getLast10Dpi();
+    //this.data.subscribe(res => this.onChange(res));
+
+    console.log('second' + this.dataX);
+    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
+    console.log('tthird ' + this.dataX);
+    console.log('hird ' + this.dataService.dataSchmierstelleLinearAchseX);
+    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
   }
 
+  public onChange(res): void {
+    this.dataX = res;
+    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
+  }
 
   doMail(engineer: Engineer) {
     const time = this.timevalue.split(':');
