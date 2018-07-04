@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +18,13 @@ export class DataService {
 
   private dataURL = 'http://it2wi1.if-lab.de/rest';
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {}
+
+  getDataX() {
+    return this.http.get(this.dataURL + '/Aufgabe6-1');
+  }
+  /*
+  constructor(private http: HttpClient) {
     this.http.get(this.dataURL + '/Aufgabe6-1').subscribe((res) => {
       this.dataSchmierstelleLinearAchseX = res.json();
     });
@@ -25,6 +37,7 @@ export class DataService {
   }
 
 
+
   getDataSchmierstelleLinearAchseX(): JSON {
     return this.dataSchmierstelleLinearAchseX;
   }
@@ -35,5 +48,5 @@ export class DataService {
 
   getDataSchmierstelleRundtisch(): JSON {
     return this.dataSchmierstelleRundtisch;
-  }
+  }*/
 }
