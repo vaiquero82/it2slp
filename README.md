@@ -1,3 +1,19 @@
+# DEPLOY
+installiere electron(npm install sollte reichen da es in den dependencies eingetragen ist) and electron-packager
+
+`npm install electron-packager --save-dev`
+
+dann kann man entweder mit 
+`npm run electron`  die app starten
+
+mit 
+
+`npm run package-win`
+`npm run package-mac`
+`npm run package-linux`
+
+jeweils fuer die verschiedene Systeme bauen. im Ordner "release-builds" liegt dann die APP.
+
 # IT2SLP      changed for commit-jira-test                  
 Project for it2
 

@@ -18,6 +18,12 @@ const routes: Routes = [
   { path: 'purchaseview', component: PurchaseDepartmentViewComponent },
   { path: 'serviceleadview', component: ServiceLeaderViewComponent },
   { path: 'serviceengineerview', component: ServiceEngineerViewComponent },
+  { path: 'serviceengineerview/', component: ServiceEngineerViewComponent },
+  { path: 'serviceengineerview/:name', component: ServiceEngineerViewComponent},
+  { path: 'serviceengineerview/Muster', component: ServiceEngineerViewComponent },
+  { path: 'serviceengineerview/Muster/', component: ServiceEngineerViewComponent },
+  { path: 'serviceengineerview/Schmidt', component: ServiceEngineerViewComponent },
+  { path: 'serviceengineerview/Schmidt/', component: ServiceEngineerViewComponent },
   { path: 'mainview', component: MainviewComponent }
 ];
 

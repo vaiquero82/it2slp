@@ -1,3 +1,7 @@
-<p>
-  service-engineer-view works!
-</p>
+<div class="container">t
+  <div class="tasklistContainer" *ngIf="dataModel.tasklist">
+    <div *ngFor="let item of dataModel.tasklist">
+        {{item.task}}
+    </div>
+  </div>
+</div>

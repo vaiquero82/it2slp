@@ -1,0 +1,42 @@
+
+
+  .example-icon {
+    padding: 0px 1.2rem;;
+    cursor: pointer;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+.barButton {
+  margin: 2rem 1rem 1rem 0rem;
+}
+
+
+  .view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 87%;
+    width: 100%;
+  }
+
+  .lineChar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .storage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+

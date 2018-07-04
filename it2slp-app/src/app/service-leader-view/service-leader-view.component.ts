@@ -7,6 +7,7 @@ import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { EngineerService } from '../services/engineer.service';
 import { Engineer } from '../services/engineer';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-service-leader-view',
@@ -14,11 +15,25 @@ import { Engineer } from '../services/engineer';
   styleUrls: ['./service-leader-view.component.css']
 })
 export class ServiceLeaderViewComponent implements OnInit {
+  /*tiles: Tile[] = [
+    {text: 'One', cols: 9, rows: 6, color: 'lightblue'},
+    {text: 'Two', cols: 9, rows: 6, color: 'lightgreen'},
+    {text: '<google-chart class="gauge" [data]="gaugeChartData"></google-chart>', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
+  ];*/
+
+
     engineers: Engineer[];
     selected = null;
     selectedKartusche = null;
     myDate = new Date();
     timevalue = '19:00';
+    data;
+    dataX: JSON;
 
 
   title = 'line-chart';
@@ -99,17 +114,30 @@ export class ServiceLeaderViewComponent implements OnInit {
  };
 
 
-  constructor(private EngService: EngineerService) {
+  constructor(private EngService: EngineerService, private dataService: DataService) {
     this.engineers = EngService.getEngineers();
+    console.log('First' + this.dataService.getDataSchmierstelleLinearAchseX());
    }
 
   ngOnInit() {
+    this.data = this.dataService.getLast10Dpi();
+    //this.data.subscribe(res => this.onChange(res));
+
+    console.log('second' + this.dataX);
+    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
+    console.log('tthird ' + this.dataX);
+    console.log('hird ' + this.dataService.dataSchmierstelleLinearAchseX);
+    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
   }
 
+  public onChange(res): void {
+    this.dataX = res;
+    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
+  }
 
   doMail(engineer: Engineer) {
     const time = this.timevalue.split(':');
@@ -121,4 +149,14 @@ export class ServiceLeaderViewComponent implements OnInit {
     location.href = 'mailto:' + engineer.email + '?subject=Service Task&body=Kartusche ' + this.selectedKartusche + ' bis spätestens ' + this.myDate + ' .';
 }
 
+
+
 }
+
+
+/*export interface Tile {
+  color: string;
+  cols: number;
+  rows: number;
+  text: string;
+}*/
