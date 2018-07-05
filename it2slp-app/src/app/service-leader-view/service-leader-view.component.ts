@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, AfterViewChecked } from '@angular/core';
 
 // tslint:disable-next-line:import-blacklist
 // import { Observable, Subscriber} from 'rxjs/Rx';
@@ -14,7 +14,7 @@ import { DataService } from '../services/data.service';
   templateUrl: './service-leader-view.component.html',
   styleUrls: ['./service-leader-view.component.css']
 })
-export class ServiceLeaderViewComponent implements OnInit {
+export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
   /*tiles: Tile[] = [
     {text: 'One', cols: 9, rows: 6, color: 'lightblue'},
     {text: 'Two', cols: 9, rows: 6, color: 'lightgreen'},
@@ -33,7 +33,9 @@ export class ServiceLeaderViewComponent implements OnInit {
     myDate = new Date();
     timevalue = '19:00';
     data;
-    dataX: JSON;
+    dataSchmierstelleLinearAchseX: any = undefined;
+    dataSchmierstelleLinearAchseY: any = undefined;
+    dataSchmierstelleRundtisch: any = undefined;
 
 
   title = 'line-chart';
@@ -116,27 +118,22 @@ export class ServiceLeaderViewComponent implements OnInit {
 
   constructor(private EngService: EngineerService, private dataService: DataService) {
     this.engineers = EngService.getEngineers();
-    console.log('First' + this.dataService.getDataSchmierstelleLinearAchseX());
    }
 
   ngOnInit() {
-    this.data = this.dataService.getLast10Dpi();
-    //this.data.subscribe(res => this.onChange(res));
-
-    console.log('second' + this.dataX);
-    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
+    this.getAllData();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    console.log('tthird ' + this.dataX);
-    console.log('hird ' + this.dataService.dataSchmierstelleLinearAchseX);
-    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
+
   }
 
-  public onChange(res): void {
-    this.dataX = res;
-    console.log('second' + this.dataService.dataSchmierstelleLinearAchseX);
+  ngAfterViewChecked(): void {
+    if (this.dataSchmierstelleLinearAchseX === undefined) {
+    } else {
+
+    }
   }
 
   doMail(engineer: Engineer) {
@@ -147,6 +144,34 @@ export class ServiceLeaderViewComponent implements OnInit {
 
     // tslint:disable-next-line:max-line-length
     location.href = 'mailto:' + engineer.email + '?subject=Service Task&body=Kartusche ' + this.selectedKartusche + ' bis spätestens ' + this.myDate + ' .';
+}
+
+getAllData() {
+  try {
+    this.dataService.getDataX()
+      .subscribe(resp => {
+        this.dataSchmierstelleLinearAchseX = resp;
+      },
+        error => {
+          console.log(error, 'error');
+        });
+        this.dataService.getDataY()
+        .subscribe(resp => {
+          this.dataSchmierstelleLinearAchseY = resp;
+        },
+          error => {
+            console.log(error, 'error');
+          });
+          this.dataService.getDataRundtisch()
+          .subscribe(resp => {
+            this.dataSchmierstelleRundtisch = resp;
+          },
+            error => {
+              console.log(error, 'error');
+            });
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 

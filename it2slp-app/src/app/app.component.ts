@@ -19,19 +19,12 @@ export class AppComponent implements OnInit, AfterViewChecked {
   constructor(public dataService: DataService) { }
 
   ngOnInit() {
-    this.getD();
+    // this.getD();
   }
 
 
 
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked()');
-    if (this.dataX === undefined) {
-      console.log('dataX is: []');
-    } else {
-      console.log('****dataX is: ');
-      console.log(this.dataX);
-    }
   }
 
 
@@ -50,8 +43,4 @@ getD() {
     console.log(e);
   }
 }
-
-  public logC(): void {
-    console.log(this.dataX);
-  }
 }

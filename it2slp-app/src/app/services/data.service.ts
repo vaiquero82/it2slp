@@ -23,6 +23,14 @@ export class DataService {
   getDataX() {
     return this.http.get(this.dataURL + '/Aufgabe6-1');
   }
+
+  getDataY() {
+    return this.http.get(this.dataURL + '/Aufgabe6-2');
+  }
+
+  getDataRundtisch() {
+    return this.http.get(this.dataURL + '/Aufgabe6-3');
+  }
   /*
   constructor(private http: HttpClient) {
     this.http.get(this.dataURL + '/Aufgabe6-1').subscribe((res) => {
