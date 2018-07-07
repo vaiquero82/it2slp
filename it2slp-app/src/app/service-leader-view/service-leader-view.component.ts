@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, Input, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, AfterViewChecked, ViewChild } from '@angular/core';
 
 // tslint:disable-next-line:import-blacklist
 // import { Observable, Subscriber} from 'rxjs/Rx';
@@ -15,17 +15,6 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./service-leader-view.component.css']
 })
 export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
-  /*tiles: Tile[] = [
-    {text: 'One', cols: 9, rows: 6, color: 'lightblue'},
-    {text: 'Two', cols: 9, rows: 6, color: 'lightgreen'},
-    {text: '<google-chart class="gauge" [data]="gaugeChartData"></google-chart>', cols: 3, rows: 2, color: 'lightpink'},
-    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
-    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
-    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
-    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
-    {text: 'Three', cols: 3, rows: 2, color: 'lightpink'},
-  ];*/
-
 
     engineers: Engineer[];
     selected = null;
@@ -36,7 +25,28 @@ export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
     dataSchmierstelleLinearAchseX: any = undefined;
     dataSchmierstelleLinearAchseY: any = undefined;
     dataSchmierstelleRundtisch: any = undefined;
+    // gaugeChartDataX;
+    gaugeChartDataY;
+    gaugeChartDataRundtisch ;
 
+    @ViewChild('cchart') cchart;
+
+    gaugeChartDataX =  {
+      chartType: 'Gauge',
+      dataTable: [
+        ['Label', 'Value'],
+        ['Value', 2.5]
+      ],
+      options: {
+        animation: {easing: 'out'},
+        width: 120, height: 120,
+        greenFrom: 1, greenTo: 4,
+        minorTicks: 5,
+        min: 0, max: 5,
+        majorTicks: ['0', '1', '2', '3', '4', '5'],
+        greenColor: '#d0e9c6'
+      }
+    };
 
   title = 'line-chart';
   options: Object;
@@ -67,22 +77,8 @@ export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
     },
   };
 
-  public gaugeChartData =  {
-    chartType: 'Gauge',
-    dataTable: [
-      ['Label', 'Value'],
-      ['Value', 1.78]
-    ],
-    options: {
-      animation: {easing: 'out'},
-      width: 120, height: 120,
-      greenFrom: 1, greenTo: 4,
-      minorTicks: 5,
-      min: 0, max: 5,
-      majorTicks: ['0', '1', '2', '3', '4', '5'],
-      greenColor: '#d0e9c6'
-    }
-  };
+
+
 
   lineChart = {
     chartType: 'ColumnChart',
@@ -120,19 +116,54 @@ export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
     this.engineers = EngService.getEngineers();
    }
 
+   getGaugeChartData(setValue) {
+    const gaugeChartData =  {
+      chartType: 'Gauge',
+      dataTable: [
+        ['Label', 'Value'],
+        ['Value', setValue]
+      ],
+      options: {
+        animation: {easing: 'out'},
+        width: 120, height: 120,
+        greenFrom: 1, greenTo: 4,
+        minorTicks: 5,
+        min: 0, max: 5,
+        majorTicks: ['0', '1', '2', '3', '4', '5'],
+        greenColor: '#d0e9c6'
+      }
+    };
+    return gaugeChartData;
+  }
+
   ngOnInit() {
     this.getAllData();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-
   }
 
   ngAfterViewChecked(): void {
-    if (this.dataSchmierstelleLinearAchseX === undefined) {
-    } else {
+    if (this.dataSchmierstelleLinearAchseX !== undefined
+      && this.dataSchmierstelleLinearAchseY !== undefined
+      && this.dataSchmierstelleRundtisch !== undefined) {
+        // this.cchart.wrapper.draw();
+       // console.log(this.cchart.wrapper);
+       // this.redrawAll();
+        return;
+      }
 
+    if (this.dataSchmierstelleLinearAchseX === undefined
+      || this.dataSchmierstelleLinearAchseY === undefined
+      || this.dataSchmierstelleRundtisch === undefined) {
+      } else {
+      let index = this.getIndex(this.dataSchmierstelleLinearAchseX);
+      this.gaugeChartDataX = this.getGaugeChartData(this.dataSchmierstelleLinearAchseX[index].werte.CURRENTTANKLEVEL);
+      index = this.getIndex(this.dataSchmierstelleLinearAchseY);
+      this.gaugeChartDataY = this.getGaugeChartData(this.dataSchmierstelleLinearAchseY[index].werte.CURRENTTANKLEVEL);
+      index = this.getIndex(this.dataSchmierstelleRundtisch);
+      this.gaugeChartDataRundtisch = this.getGaugeChartData(this.dataSchmierstelleRundtisch[index].werte.CURRENTTANKLEVEL);
     }
   }
 
@@ -146,6 +177,15 @@ export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
     location.href = 'mailto:' + engineer.email + '?subject=Service Task&body=Kartusche ' + this.selectedKartusche + ' bis spätestens ' + this.myDate + ' .';
 }
 
+redrawAll() {
+ // let dataTable = this.cchart.wrapper.getDataTable();
+  // force a redraw
+  this.gaugeChartDataX.dataTable['Value'] = 5;
+  console.log(this.cchart);
+ // this.cchart.draw();
+
+ // this.cchart.redraw();
+}
 getAllData() {
   try {
     this.dataService.getDataX()
@@ -174,7 +214,10 @@ getAllData() {
   }
 }
 
-
+getIndex(obj) {
+  const i = obj.length - 1;
+  return i;
+}
 
 }
 

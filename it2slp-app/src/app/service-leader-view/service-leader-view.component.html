@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="row-container container-sub-top">
 <mat-form-field class="item" >
     <mat-select placeholder="send Engineer" [(value)]="selected">
@@ -80,11 +81,8 @@
       <mat-grid-tile colspan="4" rowspan="1" background='red'><h3>Füllstand</h3></mat-grid-tile>
       <mat-grid-tile colspan="9" rowspan="6" background='red'><google-chart [data]="timelineChartData"></google-chart></mat-grid-tile>
       <mat-grid-tile colspan="9" rowspan="6" background='red'><google-chart [data]="lineChart"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartData"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartData"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartData"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartData"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartData"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartData"></google-chart></mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="2"><google-chart #cchart class="gauge" [data]="gaugeChartDataX"></google-chart></mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartDataY"></google-chart></mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartDataRundtisch"></google-chart></mat-grid-tile>
       <mat-grid-tile colspan="1" rowspan="7"><!-- Leere Spalte fuer die Optik --></mat-grid-tile>
     </mat-grid-list>
