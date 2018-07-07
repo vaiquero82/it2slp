@@ -4,4 +4,5 @@ export class Datetime {
   year: number;
   hour: number;
   minute: number;
+  second: number;
 }

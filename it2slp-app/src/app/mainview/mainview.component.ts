@@ -21,11 +21,12 @@ import { Datetime } from './datetime';
 })
 export class MainviewComponent implements OnInit, AfterViewChecked {
 
+
   @Input() selectedView: String;
   predictiveValue = 0.0;
   computedPredictiveValue = 0.0;
   public c: AWS.Config;
-
+  myDate = new Date();
   @ViewChild('chartTarget') chartTarget: ElementRef;
 
   chart: Highcharts.ChartObject;
@@ -75,6 +76,12 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
           hour: '%I %p',
           minute: '%I:%M %p'
         },
+        plotBands: [{
+          color: 'red', // Color value
+          zIndex: 100,
+          from: 1434470400000, // Start of the plot band
+          to: 1434830400000 // End of the plot band
+        }],
         labels: {
           overflow: 'justify',
           enabled: true
@@ -94,6 +101,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
           from: 0,
           to: 33,
           color: 'rgba(255, 0, 0, 1)',
+          zIndex: 1,
           label: {
             text: 'Bad',
             style: {
@@ -104,6 +112,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
           from: 34,
           to: 67,
           color: 'rgba(255, 255, 0, 1)',
+          zIndex: 1,
           label: {
             text: 'Medium',
             style: {
@@ -114,6 +123,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
           from: 68,
           to: 100,
           color: 'rgba(0, 136, 0, 1)',
+          zIndex: 1,
           label: {
             text: 'Strong',
             style: {
@@ -138,7 +148,8 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
             enabled: false
           },
           pointInterval: 3600000, // one hour
-          pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+          // pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+          pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
         }
       },
       series: [{
@@ -236,21 +247,39 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     //arrY.push(this.chart.series[1].data[0].y);
     let arrR: any[] = [];
     //arrR.push(this.chart.series[2].data[0].y);
-
+        //const date2 = new Date('1995-12-17T03:24:00');
     this.printDate(this.dataSchmierstelleLinearAchseX[0]);
     for (let j = 0; j < this.dataSchmierstelleLinearAchseXCurrenttanklevel.length; j++) {
       if (this.dataSchmierstelleLinearAchseXCurrenttanklevel[j] !==  undefined) {
-        arrX.push(parseFloat(this.dataSchmierstelleLinearAchseXCurrenttanklevel[j]));
+        let el: any[] = [];
+        const dateObj = this.printDate(this.dataSchmierstelleLinearAchseX[j]);
+        const date2 = new Date( dateObj.year + '-' + dateObj.month + '-' + dateObj.day + 'T' +
+                              dateObj.hour + ':' + dateObj.minute + ':' + dateObj.second);
+        el.push(date2);
+        el.push(parseFloat(this.dataSchmierstelleLinearAchseXCurrenttanklevel[j]));
+        arrX.push(el);
       }
     }
     for (let j = 0; j < this.dataSchmierstelleLinearAchseYCurrenttanklevel.length; j++) {
-      if (this.dataSchmierstelleLinearAchseXCurrenttanklevel[j] !==  undefined) {
-        arrY.push(parseFloat(this.dataSchmierstelleLinearAchseYCurrenttanklevel[j]));
+      if (this.dataSchmierstelleLinearAchseYCurrenttanklevel[j] !==  undefined) {
+        let el: any[] = [];
+        const dateObj = this.printDate(this.dataSchmierstelleLinearAchseY[j]);
+        const date2 = new Date( dateObj.year + '-' + dateObj.month + '-' + dateObj.day + 'T' +
+                              dateObj.hour + ':' + dateObj.minute + ':' + dateObj.second);
+        el.push(date2);
+        el.push(parseFloat(this.dataSchmierstelleLinearAchseYCurrenttanklevel[j]));
+        arrY.push(el);
       }
     }
     for (let j = 0; j < this.dataSchmierstelleRundtischCurrenttanklevel.length; j++) {
-      if (this.dataSchmierstelleLinearAchseXCurrenttanklevel[j] !==  undefined) {
-        arrR.push(parseFloat(this.dataSchmierstelleRundtischCurrenttanklevel[j]));
+      if (this.dataSchmierstelleRundtischCurrenttanklevel[j] !==  undefined) {
+        let el: any[] = [];
+        const dateObj = this.printDate(this.dataSchmierstelleRundtisch[j]);
+        const date2 = new Date( dateObj.year + '-' + dateObj.month + '-' + dateObj.day + 'T' +
+                              dateObj.hour + ':' + dateObj.minute + ':' + dateObj.second);
+        el.push(date2);
+        el.push(parseFloat(this.dataSchmierstelleRundtischCurrenttanklevel[j]));
+        arrR.push(el);
       }
     }
 
@@ -259,6 +288,9 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     series[1].setData(arrY, false, false, true);
     series[2].setData(arrR, false, false, true);
     this.chart.redraw();
+   // console.log(this.dataSchmierstelleLinearAchseX[0]);
+    // console.log("1:", series[0].data[0]);
+
   }
 
 
@@ -266,9 +298,10 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     const dtObj: Datetime = {
       day: element['datum'].substring(0, 2),
       month: element['datum'].substring(3, 5),
-      year: element['datum'].substring(6, 11),
+      year: element['datum'].substring(6, 10),
       hour: element['datum'].substring(11, 13),
       minute: element['datum'].substring(14, 16),
+      second: element['datum'].substring(17, 19),
     };
    return dtObj;
   }
