@@ -57,7 +57,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
 
 
 
-    const options: Highcharts.Options = {
+    const  options: Highcharts.Options = {
       credits: {
         enabled: false
       },
@@ -148,21 +148,21 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
             enabled: false
           },
           pointInterval: 3600000, // one hour
-          // pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
-          pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
+           pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+        //  pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
         }
       },
       series: [{
         name: 'X',
-        data: [2, 2, 2], // this.dataSchmierstelleLinearAchseXCurrenttanklevel,
+        data: [['1995-12-17T03:24:00', 1]], // this.dataSchmierstelleLinearAchseXCurrenttanklevel,
         color: 'rgba(128, 0, 128, 1)'
       }, {
         name: 'Y',
-        data: [2, 2, 2], // this.dataSchmierstelleLinearAchseYCurrenttanklevel,
+        data: [['1995-12-17T03:24:00', 1]], // this.dataSchmierstelleLinearAchseYCurrenttanklevel,
         color: 'rgba(61, 124, 183, 1)'
       }, {
         name: 'Rundtisch',
-        data: [2, 2, 2], // this.dataSchmierstelleRundtischCurrenttanklevel,
+        data: [['1995-12-17T03:24:00', 2]], // this.dataSchmierstelleRundtischCurrenttanklevel,
         color: 'rgba(0, 0, 0, 1)'
       }],
       navigation: {
@@ -287,6 +287,16 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
 
     series[1].setData(arrY, false, false, true);
     series[2].setData(arrR, false, false, true);
+
+    /*
+    this.chart.update({
+         plotOptions: {
+            pointInterval: 3600000, // one hour
+            // pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+            pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
+      }
+    });*/
+
     this.chart.redraw();
    // console.log(this.dataSchmierstelleLinearAchseX[0]);
     // console.log("1:", series[0].data[0]);
