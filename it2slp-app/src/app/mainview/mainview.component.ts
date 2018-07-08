@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
+import { merge } from 'rxjs/operators';
 import * as AWS from 'aws-sdk';
 import { utils } from 'protractor';
 import * as inspect from 'util-inspect';
@@ -8,6 +9,7 @@ import { chart } from 'highcharts';
 import * as Highcharts from 'highcharts';
 import { DataService } from '../services/data.service';
 import { Datetime } from './datetime';
+import { forkJoin } from 'rxjs/observable/forkJoin';
 
 
 
@@ -41,6 +43,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   minDate = this.yesterday;
   maxDate = Date.now();
 
+
   constructor(private dataService: DataService) {
 // import entire SDK
 // const inspect = require('util-inspect');
@@ -51,13 +54,12 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     this.getAllData();
+    setTimeout(this.onClick.bind(this), 2000);
+  }
 
-
-
-
-
-
-    const  options: Highcharts.Options = {
+  onClick() {
+    console.log(this.dataSchmierstelleLinearAchseX);
+      const options: Highcharts.Options = {
       credits: {
         enabled: false
       },
@@ -171,10 +173,8 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         }
       }
     };
-
     this.chart = chart(this.chartTarget.nativeElement, options);
   }
-
 
 
   savePrediction(err, data) {
@@ -198,44 +198,42 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
 
   getAllData() {
     try {
-      this.dataService.getDataX()
-        .subscribe(resp => {
-          this.dataSchmierstelleLinearAchseX = resp;
-          this.dataSchmierstelleLinearAchseX.forEach(element => {
-            this.dataSchmierstelleLinearAchseXCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
-          });
-        },
-          error => {
-            console.log(error, 'error');
-          });
-          this.dataService.getDataY()
-          .subscribe(resp => {
-            this.dataSchmierstelleLinearAchseY = resp;
-            this.dataSchmierstelleLinearAchseY.forEach(element => {
-              this.dataSchmierstelleLinearAchseYCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
-            });
-          },
-            error => {
-              console.log(error, 'error');
-            });
-            this.dataService.getDataRundtisch()
-            .subscribe(resp => {
-              this.dataSchmierstelleRundtisch = resp;
-              this.dataSchmierstelleRundtisch.forEach(element => {
-                this.dataSchmierstelleRundtischCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
-              });
-            },
-              error => {
-                console.log(error, 'error');
-              });
-    } catch (e) {
-      console.log(e);
-    }
+      const f = this.dataService.getDataX();
+      const s = this.dataService.getDataY();
+      const t = this.dataService.getDataRundtisch();
+      forkJoin([f, s, t]).subscribe(results => {
+        this.dataSchmierstelleLinearAchseX = results[0];
+        this.dataSchmierstelleLinearAchseY = results[1];
+        this.dataSchmierstelleRundtisch = results[2];
+        this.saveData(results);
+        this.dataSchmierstelleLinearAchseX.forEach(element => {
+          this.dataSchmierstelleLinearAchseXCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
+        });
+        this.dataSchmierstelleLinearAchseY.forEach(element => {
+          this.dataSchmierstelleLinearAchseYCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
+        });
+        this.dataSchmierstelleRundtisch.forEach(element => {
+          this.dataSchmierstelleRundtischCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
+        });
 
+
+
+
+      });
+        } catch (e) {
+      console.log(e);
+        }
+  }
+
+
+  saveData(results) {
+    this.dataSchmierstelleLinearAchseX = results[0];
+    this.dataSchmierstelleLinearAchseY = results[1];
+    this.dataSchmierstelleRundtisch = results[2];
   }
 
   ngAfterViewInit() {
-    setInterval(this.onChange.bind(this), 4000);
+   // setInterval(this.onChange.bind(this), 4000);
   }
   public onChange(dpiRes): void {
     console.log('Start');
@@ -314,5 +312,21 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       second: element['datum'].substring(17, 19),
     };
    return dtObj;
+  }
+
+
+
+  chartInit() {
+
+  }
+
+
+  sleep(milliseconds) {
+    const start = new Date().getTime();
+    for (let i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds) {
+        break;
+      }
+    }
   }
 }
