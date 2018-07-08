@@ -325,7 +325,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     };
     let x = Number(dtObj.month);
     x =  x - 1;
-    dtObj.month = x.toString();
+    dtObj.month = x;
    return dtObj;
   }
 
