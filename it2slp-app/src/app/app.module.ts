@@ -36,6 +36,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule} from '@angular/material/menu';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
+import { LineChartXAxisComponent } from './charts/line-chart-x-axis/line-chart-x-axis.component';
+import { LineChartYAxisComponent } from './charts/line-chart-y-axis/line-chart-y-axis.component';
+import { LineChartRundtischComponent } from './charts/line-chart-rundtisch/line-chart-rundtisch.component';
 
 
 
@@ -52,7 +55,10 @@ export declare let require: any;
     LoginComponent,
     PurchaseDepartmentViewComponent,
     ServiceLeaderViewComponent,
-    ServiceEngineerViewComponent
+    ServiceEngineerViewComponent,
+    LineChartXAxisComponent,
+    LineChartYAxisComponent,
+    LineChartRundtischComponent
   ],
   imports: [
     BrowserModule,

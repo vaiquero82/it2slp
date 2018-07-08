@@ -7,56 +7,47 @@ import { utils } from 'protractor';
 import * as inspect from 'util-inspect';
 import { chart } from 'highcharts';
 import * as Highcharts from 'highcharts';
-import { DataService } from '../services/data.service';
-import { Datetime } from './datetime';
+import { DataService } from '../../services/data.service';
+import { Datetime } from '../../services/datetime';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
 
 
-
-
 @Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'mainview',
-  templateUrl: './mainview.component.html',
-  styleUrls: ['./mainview.component.css']
+  selector: 'app-line-chart-x-axis',
+  templateUrl: './line-chart-x-axis.component.html',
+  styleUrls: ['./line-chart-x-axis.component.css']
 })
-export class MainviewComponent implements OnInit, AfterViewChecked {
-
-
-  @Input() selectedView: String;
-  predictiveValue = 0.0;
-  computedPredictiveValue = 0.0;
-  public c: AWS.Config;
+export class LineChartXAxisComponent  implements OnInit, AfterViewChecked {
   myDate = new Date();
   @ViewChild('chartTarget') chartTarget: ElementRef;
 
   chart: Highcharts.ChartObject;
   dataSchmierstelleLinearAchseX;
-  dataSchmierstelleLinearAchseY;
-  dataSchmierstelleRundtisch;
   dataSchmierstelleLinearAchseXCurrenttanklevel = [];
-  dataSchmierstelleLinearAchseYCurrenttanklevel = [];
-  dataSchmierstelleRundtischCurrenttanklevel = [];
 
-
+  yesterday = new Date(Date.now() - (24 * 60 * 60 * 1000));
+  minDate = this.yesterday;
+  maxDate = Date.now();
 
 
   constructor(private dataService: DataService) {
-// import entire SDK
-// const inspect = require('util-inspect');
+  }
 
 
-
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit() {
+    setInterval(this.onChange.bind(this), 4000);
   }
 
   ngOnInit() {
     this.getAllData();
-    setTimeout(this.onClick.bind(this), 1000);
+    setTimeout(this.initChart.bind(this), 1000);
   }
 
-  onClick() {
-    const dateObj = this.dataSchmierstelleLinearAchseX[0]['datum'];
+  initChart() {
+    console.log(this.getDateFromJSON(this.dataSchmierstelleLinearAchseX[0]));
+    let dateObj = this.getDateFromJSON(this.dataSchmierstelleLinearAchseX[0]);
       const options: Highcharts.Options = {
       credits: {
         enabled: false
@@ -147,33 +138,33 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
           marker: {
             enabled: false
           },
-          pointInterval: 3600000, // one hour
+          pointInterval: 14400000, // 3600000, // one hour
           pointStart: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second)
-          // pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
+        //  pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
         }
       },
+      series:
+
+      [{
+        name: 'Foo',
+
+
+        data: [{
+          x: Date.UTC(2016, 7, 29),
+          y: 1.0
+        }, {
+          x: Date.UTC(2016, 9, 29),
+          y: 2.0
+        }, {
+          x: Date.UTC(2016, 9, 29),
+          y: 3.18
+        }],
+       }], /*
       series: [{
         name: 'X',
-        data: [{
-          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
-          y: 2,
-        }], // this.dataSchmierstelleLinearAchseXCurrenttanklevel,
+        data: [['1995-12-17T03:24:00', 1]], // this.dataSchmierstelleLinearAchseXCurrenttanklevel,
         color: 'rgba(128, 0, 128, 1)'
-      }, {
-        name: 'Y',
-        data: [{
-          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
-          y: 2,
-        }], // this.dataSchmierstelleLinearAchseYCurrenttanklevel,
-        color: 'rgba(61, 124, 183, 1)'
-      }, {
-        name: 'Rundtisch',
-        data: [{
-          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
-          y: 2,
-        }], // this.dataSchmierstelleRundtischCurrenttanklevel,
-        color: 'rgba(0, 0, 0, 1)'
-      }],
+      }],*/
       navigation: {
         menuItemStyle: {
           fontSize: '10px'
@@ -183,22 +174,6 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     this.chart = chart(this.chartTarget.nativeElement, options);
   }
 
-
-  savePrediction(err, data) {
-    if (err) {
-      console.log(err, err.stack);
-    } else {
-      this.predictiveValue =  data.Prediction.predictedValue;
-      this.computePrediction(this.predictiveValue);
-    }
-  }
-
-  computePrediction(x) {
-    this.computedPredictiveValue =  Math.pow((x - (x * 0.4)), Math.exp(1));
-
-  }
-
-
   ngAfterViewChecked(): void {
 
   }
@@ -206,26 +181,13 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   getAllData() {
     try {
       const f = this.dataService.getDataX();
-      const s = this.dataService.getDataY();
-      const t = this.dataService.getDataRundtisch();
-      forkJoin([f, s, t]).subscribe(results => {
+
+      forkJoin([f]).subscribe(results => {
         this.dataSchmierstelleLinearAchseX = results[0];
-        this.dataSchmierstelleLinearAchseY = results[1];
-        this.dataSchmierstelleRundtisch = results[2];
-        this.saveData(results);
+        this.dataSchmierstelleLinearAchseX = results[0];
         this.dataSchmierstelleLinearAchseX.forEach(element => {
           this.dataSchmierstelleLinearAchseXCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
         });
-        this.dataSchmierstelleLinearAchseY.forEach(element => {
-          this.dataSchmierstelleLinearAchseYCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
-        });
-        this.dataSchmierstelleRundtisch.forEach(element => {
-          this.dataSchmierstelleRundtischCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
-        });
-
-
-
-
       });
         } catch (e) {
       console.log(e);
@@ -233,16 +195,10 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   }
 
 
-  saveData(results) {
-    this.dataSchmierstelleLinearAchseX = results[0];
-    this.dataSchmierstelleLinearAchseY = results[1];
-    this.dataSchmierstelleRundtisch = results[2];
-  }
 
-  ngAfterViewInit() {
-   setInterval(this.onChange.bind(this), 4000);
-  }
+
   public onChange(dpiRes): void {
+    console.log('Start');
     // const series = this.chart.series;
     const series = this.chart.series;
     const arrX: any[] = [];
@@ -262,41 +218,8 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         };
         arrX.push(el2);
       }
-      // if (j === this.dataSchmierstelleLinearAchseXCurrenttanklevel.length - 1) {
-      //   console.log(this.dataSchmierstelleLinearAchseX[j]['datum']);
-      // }
     }
-    for (let j = 0; j < this.dataSchmierstelleLinearAchseYCurrenttanklevel.length; j++) {
-      if (this.dataSchmierstelleLinearAchseYCurrenttanklevel[j] !==  undefined) {
-        const dateObj = this.getDateFromJSON(this.dataSchmierstelleLinearAchseY[j]);
-        const el2 = {
-          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
-          y: parseFloat(this.dataSchmierstelleLinearAchseYCurrenttanklevel[j]),
-        };
-        arrY.push(el2);
-      }
-      // if (j === this.dataSchmierstelleLinearAchseYCurrenttanklevel.length - 1) {
-      //   console.log(this.dataSchmierstelleLinearAchseY[j]['datum']);
-      // }
-    }
-    for (let j = 0; j < this.dataSchmierstelleRundtischCurrenttanklevel.length; j++) {
-      if (this.dataSchmierstelleRundtischCurrenttanklevel[j] !==  undefined) {
-        const dateObj = this.getDateFromJSON(this.dataSchmierstelleRundtisch[j]);
-        const el2 = {
-          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
-          y: parseFloat(this.dataSchmierstelleRundtischCurrenttanklevel[j]),
-        };
-        arrR.push(el2);
-      }
-      // if (j === this.dataSchmierstelleRundtischCurrenttanklevel.length - 1) {
-      //   console.log(this.dataSchmierstelleRundtisch[j]['datum']);
-      // }
-    }
-
     series[0].setData(arrX, false, false, true);
-
-    series[1].setData(arrY, false, false, true);
-    series[2].setData(arrR, false, false, true);
 
     /*
     this.chart.update({
@@ -309,7 +232,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
 
     this.chart.redraw();
    // console.log(this.dataSchmierstelleLinearAchseX[0]);
-
+    // console.log("1:", series[0].data[0]);
 
   }
 
@@ -323,16 +246,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       minute: element['datum'].substring(14, 16),
       second: element['datum'].substring(17, 19),
     };
-    let x = Number(dtObj.month);
-    x =  x - 1;
-    dtObj.month = x.toString();
    return dtObj;
-  }
-
-
-
-  chartInit() {
-
   }
 
 
@@ -344,4 +258,5 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       }
     }
   }
+
 }
