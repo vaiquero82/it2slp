@@ -1,3 +1,14 @@
+<mat-toolbar color="basic">
+  <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
+  <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
+  <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
+  <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+</mat-toolbar>
+<div #chartTarget>
+  chart target
+  </div>
+
+
 <div class="mainviewContainer">
   Predictive Value = {{predictiveValue}}
 <br>
@@ -6,15 +17,43 @@
 </div>
 
 
-<button class="btn btn-outline-primary" (click)="ngOnInit()" style="position: absolute; top: 200px; left: 100px;">Get Prediction</button>
+<button mat-button class="btn" (click)="ngOnInit()" style="position: absolute; top: 200px; left: 100px;">Get Prediction</button>
 <app-line-chart-x-axis></app-line-chart-x-axis>
 <app-line-chart-y-axis></app-line-chart-y-axis>
 <app-line-chart-rundtisch></app-line-chart-rundtisch>
 
-<div #chartTarget>
-  chart target
-  </div>
+
 
   <button (click)="onClick()">show it</button>
 
 
+  <mat-toolbar color="basic">
+    <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
+    <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
+    <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
+    <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+  </mat-toolbar>
+  <mat-toolbar color="primary">
+    <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
+    <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
+    <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
+    <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+  </mat-toolbar>
+  <mat-toolbar color="accent">
+    <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
+    <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
+    <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
+    <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+  </mat-toolbar>
+  <mat-toolbar color="warn">
+    <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
+    <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
+    <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
+    <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+  </mat-toolbar>
+  <mat-toolbar color="link">
+    <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
+    <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
+    <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
+    <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+  </mat-toolbar>

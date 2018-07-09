@@ -5,3 +5,7 @@
  /* background-image: url('../../assets/chip-chipset-closeup-40879.jpg');
   background-size: cover;*/
 }
+
+.btn {
+  margin: 1rem;
+}

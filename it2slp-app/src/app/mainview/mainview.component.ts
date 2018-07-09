@@ -8,7 +8,7 @@ import * as inspect from 'util-inspect';
 import { chart } from 'highcharts';
 import * as Highcharts from 'highcharts';
 import { DataService } from '../services/data.service';
-import { Datetime } from './datetime';
+import { Datetime } from '../services/datetime';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
 
@@ -68,7 +68,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         type: 'spline'
       },
       title: {
-        text: 'Kartuschenfüllstand'
+        text: null
       },
       xAxis: {
         type: 'datetime',
@@ -239,10 +239,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     this.dataSchmierstelleRundtisch = results[2];
   }
 
-  ngAfterViewInit() {
-   setInterval(this.onChange.bind(this), 4000);
-  }
-  public onChange(dpiRes): void {
+  chooseAll(): void {
     // const series = this.chart.series;
     const series = this.chart.series;
     const arrX: any[] = [];
@@ -343,5 +340,116 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         break;
       }
     }
+  }
+
+  chooseX() {
+    const series = this.chart.series;
+    const arrX: any[] = [];
+    const arrY: any[] = [];
+    // arrY.push(this.chart.series[1].data[0].y);
+    const arrR: any[] = [];
+    for (let j = 0; j < this.dataSchmierstelleLinearAchseXCurrenttanklevel.length; j++) {
+      if (this.dataSchmierstelleLinearAchseXCurrenttanklevel[j] !==  undefined) {
+        const dateObj = this.getDateFromJSON(this.dataSchmierstelleLinearAchseX[j]);
+        const el2 = {
+          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
+          y: parseFloat(this.dataSchmierstelleLinearAchseXCurrenttanklevel[j]),
+        };
+        arrX.push(el2);
+      }
+      // if (j === this.dataSchmierstelleLinearAchseXCurrenttanklevel.length - 1) {
+      //   console.log(this.dataSchmierstelleLinearAchseX[j]['datum']);
+      // }
+    }
+
+    series[0].setData(arrX, false, false, true);
+
+    series[1].setData(arrY, false, false, true);
+    series[2].setData(arrR, false, false, true);
+
+    /*
+    this.chart.update({
+         plotOptions: {
+            pointInterval: 3600000, // one hour
+            // pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+            pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
+      }
+    });*/
+
+    this.chart.redraw();
+  }
+  chooseY() {
+    const series = this.chart.series;
+    const arrX: any[] = [];
+    const arrY: any[] = [];
+    // arrY.push(this.chart.series[1].data[0].y);
+    const arrR: any[] = [];
+    for (let j = 0; j < this.dataSchmierstelleLinearAchseYCurrenttanklevel.length; j++) {
+      if (this.dataSchmierstelleLinearAchseYCurrenttanklevel[j] !==  undefined) {
+        const dateObj = this.getDateFromJSON(this.dataSchmierstelleLinearAchseY[j]);
+        const el2 = {
+          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
+          y: parseFloat(this.dataSchmierstelleLinearAchseYCurrenttanklevel[j]),
+        };
+        arrY.push(el2);
+      }
+      // if (j === this.dataSchmierstelleLinearAchseYCurrenttanklevel.length - 1) {
+      //   console.log(this.dataSchmierstelleLinearAchseY[j]['datum']);
+      // }
+    }
+
+    series[0].setData(arrX, false, false, true);
+
+    series[1].setData(arrY, false, false, true);
+    series[2].setData(arrR, false, false, true);
+
+    /*
+    this.chart.update({
+         plotOptions: {
+            pointInterval: 3600000, // one hour
+            // pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+            pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
+      }
+    });*/
+
+    this.chart.redraw();
+  }
+  chooseR() {
+    const series = this.chart.series;
+    const arrX: any[] = [];
+    const arrY: any[] = [];
+    // arrY.push(this.chart.series[1].data[0].y);
+    const arrR: any[] = [];
+    for (let j = 0; j < this.dataSchmierstelleRundtischCurrenttanklevel.length; j++) {
+      if (this.dataSchmierstelleRundtischCurrenttanklevel[j] !==  undefined) {
+        const dateObj = this.getDateFromJSON(this.dataSchmierstelleRundtisch[j]);
+        const el2 = {
+          x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
+          y: parseFloat(this.dataSchmierstelleRundtischCurrenttanklevel[j]),
+        };
+        arrR.push(el2);
+      }
+      // if (j === this.dataSchmierstelleRundtischCurrenttanklevel.length - 1) {
+      //   console.log(this.dataSchmierstelleRundtisch[j]['datum']);
+      // }
+    }
+
+    series[0].setData(arrX, false, false, true);
+
+    series[1].setData(arrY, false, false, true);
+    series[2].setData(arrR, false, false, true);
+
+    /*
+    this.chart.update({
+         plotOptions: {
+            pointInterval: 3600000, // one hour
+            // pointStart: Date.UTC(2015, 4, 31, 0, 0, 0)
+            pointStart: Date.UTC(2016, 12, 16, 13, 44, 19)
+      }
+    });*/
+
+    this.chart.redraw();
+   // console.log(this.dataSchmierstelleLinearAchseX[0]);
+
   }
 }
