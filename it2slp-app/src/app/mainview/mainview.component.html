@@ -1,13 +1,19 @@
 <mat-toolbar color="basic">
-  <button mat-button class="btn" (click)="chooseX()">Kartusche X</button>
-  <button mat-button class="btn" (click)="chooseY()">Kartusche Y</button>
-  <button mat-button class="btn" (click)="chooseR()">Kartusche R</button>
-  <button mat-button class="btn" (click)="chooseAll()">Kartusche R</button>
+<button mat-button class="btn" (click)="chooseX()">Kartusche xAxis</button>
+<button mat-button class="btn" (click)="chooseY()">Kartusche yAxis</button>
+<button mat-button class="btn" (click)="chooseR()">Kartusche Rundtisch</button>
+<button mat-button class="btn" (click)="chooseAll()">Kartusche All</button>
 </mat-toolbar>
-<div #chartTarget>
-  <mat-progress-spinner
+
+
+
+<div class="chartContainertToLoad">
+  <div class="chartStyle" #chartTarget>
+    <mat-progress-spinner
         class="example-margin"
         color="primary"
         mode="indeterminate">
     </mat-progress-spinner>
   </div>
+</div>
+

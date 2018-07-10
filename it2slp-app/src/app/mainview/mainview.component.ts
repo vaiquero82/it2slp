@@ -54,7 +54,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     this.loading = true;
     console.log('Loading');
     this.getAllData();
-    setTimeout(this.onClick.bind(this), 3000);
+    setTimeout(this.onClick.bind(this), 1500);
   }
 
   onClick() {
@@ -91,7 +91,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         }
       },
       yAxis: {
-        tickInterval: 20,
+        tickInterval: 10,
         title: {
           text: '%'
         },
@@ -212,7 +212,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       const s = this.dataService.getDataY();
       const t = this.dataService.getDataRundtisch();
       forkJoin([f, s, t]).subscribe(results => {
-        this.sleep(10000);
+        this.sleep(1000);
 
         this.dataSchmierstelleLinearAchseX = results[0];
         this.dataSchmierstelleLinearAchseY = results[1];

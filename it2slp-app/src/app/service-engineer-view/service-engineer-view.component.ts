@@ -15,7 +15,8 @@ export class ServiceEngineerViewComponent implements OnInit {
   user = 'Schmidt';
   constructor(private EngService: EngineerService, private route: ActivatedRoute) {
     console.log(this.route);
-     this.route.params.subscribe( params => this.log(params['name']));
+     // this.route.params.subscribe( params => this.log(params['name']));
+     this.log('Schmidt');
    }
 
    log(s: string) {
