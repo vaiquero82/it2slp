@@ -11,7 +11,7 @@ export class EngineerService {
     id: 1,
     datetime: new Date(),
     time: '19:30',
-    task: 'Kartusche 5 Wechseln',
+    task: 'Kartusche 5 wechseln',
     done: 'done',
     display: 'keyboard_arrow_down'
   };
@@ -19,7 +19,7 @@ export class EngineerService {
     id: 2,
     datetime: Date.now(),
     time: '13:00',
-    task: 'Kartusche 4 Wechseln',
+    task: 'Kartusche 4 wechseln',
     done: 'error',
     display: 'keyboard_arrow_down'
   };
@@ -27,7 +27,7 @@ export class EngineerService {
     id: 4,
     datetime: Date.now(),
     time: '15:30',
-    task: 'Kartusche 2 Wechseln',
+    task: 'Kartusche 2 wechseln',
     done: 'hourglass_empty',
     display: 'keyboard_arrow_down'
   };
@@ -35,7 +35,7 @@ export class EngineerService {
     id: 5,
     datetime: Date.now(),
     time: '17:00',
-    task: 'Kartusche 2 Wechseln',
+    task: 'Kartusche 2 wechseln',
     done: 'hourglass_empty',
     display: 'keyboard_arrow_down'
   };
@@ -43,7 +43,7 @@ export class EngineerService {
     id: 6,
     datetime: Date.now(),
     time: '12:00',
-    task: 'Kartusche 2 Wechseln',
+    task: 'Kartusche 2 wechseln',
     done: 'hourglass_empty',
     display: 'keyboard_arrow_down'
   };
@@ -51,7 +51,7 @@ export class EngineerService {
     id: 7,
     datetime: Date.now(),
     time: '14:00',
-    task: 'Kartusche 2 Wechseln',
+    task: 'Kartusche 2 wechseln',
     done: 'hourglass_empty',
     display: 'keyboard_arrow_down'
   };
