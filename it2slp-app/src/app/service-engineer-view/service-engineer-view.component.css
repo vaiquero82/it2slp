@@ -6,11 +6,23 @@
 
 .tasklistContainer {
 
-  width: 100%;
+  width: 40%;
   height: 100%;
 }
 mat-grid-tile{
-background-color: cyan;
-border: 1px solid red;
+background-color: lightgrey;
+padding:3px;
+border:3px solid #424242;
 text-align:center;
+}
+mat-grid-tile:hover{
+  background-color: lightcyan;
+}
+.map{
+  background-color:lightgrey;
+  width:847px;
+  height:555px;
+  position: fixed;
+  right: 100px;
+  top: 100px;
 }
