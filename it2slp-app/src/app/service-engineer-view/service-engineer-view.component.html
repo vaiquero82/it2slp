@@ -1,7 +1,21 @@
-<div class="container">t
+<div class="container">
   <div class="tasklistContainer" *ngIf="dataModel.tasklist">
-    <div *ngFor="let item of dataModel.tasklist">
-        {{item.task}}
-    </div>
+    <mat-grid-list cols="10" width="2000px" rowHeight="50px;">
+      <mat-grid-tile colspan="10" style="color:white; background-color: #424242; "><h3>Auftragsübersicht</h3></mat-grid-tile>
+      <div *ngFor="let item of dataModel.tasklist">
+        <mat-grid-tile colspan="9">Auftrag Nr.: {{item.id}}</mat-grid-tile>
+        <mat-grid-tile (click)="toggleVis(item)"><i class="material-icons"  >{{item.display}}</i></mat-grid-tile>
+        <div *ngIf='item.display=="keyboard_arrow_down"' id="{{item.id}}">
+          <mat-grid-tile colspan="5" rowspan="1">Uhrzeit:</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">{{item.time}}</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">Auftrag:</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">{{item.task}}</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">Status:</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5"><i class="material-icons" (click)="changeStateL(item)">keyboard_arrow_left</i><i class="material-icons">{{item.done}}</i><i class="material-icons" (click)="changeStateR(item)">keyboard_arrow_right</i></mat-grid-tile>
+        </div>
+
+      </div>
+    </mat-grid-list>
   </div>
+    <img class="map" src="../../assets/map.png"/>
 </div>

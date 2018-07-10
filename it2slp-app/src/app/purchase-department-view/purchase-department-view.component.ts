@@ -54,7 +54,7 @@ export class PurchaseDepartmentViewComponent implements OnInit {
   }
 
   onclack(name) {
-    location.href = 'mailto:logistik@lieferant.de?subject=Service Task&body=Lieferauftrag zur erneuten Lieferung ' +
+    location.href = 'mailto:logistik@lieferant.de?subject=Lieferauftrag&body=Lieferauftrag zur erneuten Lieferung ' +
     'von Fettkartuschen für Firma ' + name +
     ' zum nächstmöglichem Zeitpunkt.';
   }

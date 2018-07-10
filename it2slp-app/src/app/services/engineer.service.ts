@@ -11,18 +11,53 @@ export class EngineerService {
     id: 1,
     datetime: new Date(),
     time: '19:30',
-    task: 'Kartusche 5 Wechseln',
-    done: false
+    task: 'Kartusche 5 wechseln',
+    done: 'done',
+    display: 'keyboard_arrow_down'
   };
   t12: ServiceTask = {
     id: 2,
     datetime: Date.now(),
     time: '13:00',
-    task: 'Kartusche 4 Wechseln',
-    done: false
+    task: 'Kartusche 4 wechseln',
+    done: 'error',
+    display: 'keyboard_arrow_down'
+  };
+  t14: ServiceTask = {
+    id: 4,
+    datetime: Date.now(),
+    time: '15:30',
+    task: 'Kartusche 2 wechseln',
+    done: 'hourglass_empty',
+    display: 'keyboard_arrow_down'
+  };
+  t15: ServiceTask = {
+    id: 5,
+    datetime: Date.now(),
+    time: '17:00',
+    task: 'Kartusche 2 wechseln',
+    done: 'hourglass_empty',
+    display: 'keyboard_arrow_down'
+  };
+  t16: ServiceTask = {
+    id: 6,
+    datetime: Date.now(),
+    time: '12:00',
+    task: 'Kartusche 2 wechseln',
+    done: 'hourglass_empty',
+    display: 'keyboard_arrow_down'
+  };
+  t17: ServiceTask = {
+    id: 7,
+    datetime: Date.now(),
+    time: '14:00',
+    task: 'Kartusche 2 wechseln',
+    done: 'hourglass_empty',
+    display: 'keyboard_arrow_down'
   };
 
-  tasklist1 = [this.t11, this.t12];
+
+  tasklist1 = [this.t11, this.t12, this.t14, this.t15, this.t16, this.t17];
   tasklist2 = [this.t11, this.t12];
 
 

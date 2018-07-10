@@ -5,5 +5,6 @@ export class ServiceTask {
   datetime: any;
   time: string;
   task: string;
-  done: boolean;
+  done: string;
+  display: string;
 }
