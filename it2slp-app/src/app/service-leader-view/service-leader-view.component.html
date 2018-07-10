@@ -74,13 +74,15 @@
     </mat-grid-tile>
   </mat-grid-list>*-->
 
+
   <mat-grid-list cols="24" rowHeight="75px">
       <mat-grid-tile colspan="1" rowspan="7"><!-- Leere Spalte fuer die Optik --></mat-grid-tile>
       <mat-grid-tile colspan="9" rowspan="1" background='red'><h3>Schmierzeitpunkte</h3></mat-grid-tile>
       <!-- <mat-grid-tile colspan="9" rowspan="6" background='red'><google-chart [data]="timelineChartData"></google-chart></mat-grid-tile> -->
 
       <mat-grid-tile colspan="9" rowspan="1" background='red'><h3>Füllstand über die Zeit</h3></mat-grid-tile>
-      <mainview></mainview>
+          <mainview ></mainview>
+
       <mat-grid-tile colspan="4" rowspan="1" background='red'><h3>Füllstand</h3></mat-grid-tile>
 
       <!-- <mat-grid-tile colspan="2" rowspan="2"><google-chart #cchart class="gauge" [data]="gaugeChartDataX"></google-chart></mat-grid-tile>
