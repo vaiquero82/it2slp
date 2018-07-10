@@ -1,7 +1,23 @@
 <div class="container">t
   <div class="tasklistContainer" *ngIf="dataModel.tasklist">
-    <div *ngFor="let item of dataModel.tasklist">
-        {{item.task}}
-    </div>
+    <mat-grid-list cols="3">
+      <div *ngFor="let item of dataModel.tasklist">
+        <mat-grid-tile colspan="2">Auftrag Nr.: {{item.id}}</mat-grid-tile>
+        <mat-grid-tile><i class="material-icons" (click)="toggleVis(item.id)" >keyboard_arrow_down</i></mat-grid-tile>
+        <div class="ng-hide" id="{{item.id}}">
+          <mat-grid-tile rowspan="1">Uhrzeit:</mat-grid-tile>
+          <mat-grid-tile rowspan="1">{{item.time}}</mat-grid-tile>
+          <mat-grid-tile rowspan="1">Status wechseln</mat-grid-tile>
+          <mat-grid-tile rowspan="1">Auftrag:</mat-grid-tile>
+          <mat-grid-tile rowspan="1">{{item.task}}</mat-grid-tile>
+          <mat-grid-tile rowspan="2">ksdfp  </mat-grid-tile>
+          <mat-grid-tile rowspan="1">Status:</mat-grid-tile>
+          <mat-grid-tile rowspan="1">{{item.done}}</mat-grid-tile>
+        </div>
+
+      </div>
+    </mat-grid-list>
+
+
   </div>
 </div>

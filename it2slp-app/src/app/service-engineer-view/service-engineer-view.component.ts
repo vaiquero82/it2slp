@@ -39,4 +39,10 @@ export class ServiceEngineerViewComponent implements OnInit {
   outE() {
     console.log(this.dataModel);
   }
+
+  toggleVis(id) {
+    console.log(id);
+    const myElement = document.getElementById(id);
+    myElement.addClass("ng-hide");
+  }
 }
