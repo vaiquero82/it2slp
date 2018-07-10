@@ -43,6 +43,6 @@ export class ServiceEngineerViewComponent implements OnInit {
   toggleVis(id) {
     console.log(id);
     const myElement = document.getElementById(id);
-    myElement.addClass("ng-hide");
+    //myElement.addClass("ng-hide");
   }
 }
