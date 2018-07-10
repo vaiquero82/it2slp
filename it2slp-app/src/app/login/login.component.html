@@ -1,11 +1,11 @@
 <div class="LoginContainer">
 <form  class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput type="text" [(ngModel)]="user" name="user" placeholder="Username">
+      <input class="login-input-field" matInput type="text" [(ngModel)]="user" name="user" placeholder="Username">
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput type="password" [(ngModel)]="pass" name="pass" placeholder="Password">
+      <input class="login-input-field" matInput type="password" [(ngModel)]="pass" name="pass" placeholder="Password">
     </mat-form-field>
   </form>
   <button class="loginButton" mat-raised-button color="primary" (click)="submit('submit')">Submit</button>
