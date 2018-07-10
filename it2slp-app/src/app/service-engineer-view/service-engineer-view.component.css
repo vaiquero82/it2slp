@@ -4,6 +4,10 @@
   margin: 0px;
 }
 
+.darker {
+  background-color: #818181;
+}
+
 .tasklistContainer {
 
   width: 40%;
