@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 export interface tasks {
   name: string;
@@ -47,9 +47,16 @@ export class PurchaseDepartmentViewComponent implements OnInit {
   dataSource = tasks_data;
   displayedColumns2: string[] = ['name', 'level', 'perc', 'action'];
   dataSource2 = companies_data;
+  blubb: string;
   constructor() { }
 
   ngOnInit() {
   }
 
+  onclack(name) {
+    location.href = 'mailto:logistik@lieferant.de?subject=Service Task&body=Lieferauftrag zur erneuten Lieferung ' +
+    'von Fettkartuschen für Firma ' + name +
+    ' zum nächstmöglichem Zeitpunkt.';
+  }
 }
+

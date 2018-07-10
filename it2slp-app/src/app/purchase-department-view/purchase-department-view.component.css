@@ -1,7 +1,27 @@
-
-
-
 table {
   width: 100%;
+  text-align: center;
 }
-
+mat-table{
+  position: absolute;;
+  top:0px;
+  background-color:   grey;
+}
+th{
+  font-size: 20px;
+  text-align: center;
+}
+h3{
+  color: white;
+}
+mat-grid-tile{
+  padding:0;
+}
+mat-table button{
+  margin: 5px;
+  border: 1px solid lightgrey;
+}
+tr:hover{
+  background-color:lightgrey;
+  color:grey;
+}
