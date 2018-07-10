@@ -30,7 +30,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   public c: AWS.Config;
   myDate = new Date();
   @ViewChild('chartTarget') chartTarget: ElementRef;
-
+  loading = false;
   chart: Highcharts.ChartObject;
   dataSchmierstelleLinearAchseX;
   dataSchmierstelleLinearAchseY;
@@ -51,11 +51,14 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    this.loading = true;
+    console.log('Loading');
     this.getAllData();
-    setTimeout(this.onClick.bind(this), 1000);
+    setTimeout(this.onClick.bind(this), 3000);
   }
 
   onClick() {
+    console.log('onclick()', this.dataSchmierstelleLinearAchseX[0]);
     const dateObj = this.dataSchmierstelleLinearAchseX[0]['datum'];
       const options: Highcharts.Options = {
       credits: {
@@ -209,6 +212,8 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       const s = this.dataService.getDataY();
       const t = this.dataService.getDataRundtisch();
       forkJoin([f, s, t]).subscribe(results => {
+        this.sleep(10000);
+
         this.dataSchmierstelleLinearAchseX = results[0];
         this.dataSchmierstelleLinearAchseY = results[1];
         this.dataSchmierstelleRundtisch = results[2];
@@ -222,11 +227,10 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         this.dataSchmierstelleRundtisch.forEach(element => {
           this.dataSchmierstelleRundtischCurrenttanklevel.push(element.werte.CURRENTTANKLEVEL);
         });
-
-
-
-
+        this.loading = false;
+        console.log('fertisch');
       });
+
         } catch (e) {
       console.log(e);
         }
@@ -343,6 +347,9 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   }
 
   chooseX() {
+    if (this.chart.series === undefined) {
+        this.onClick();
+    }
     const series = this.chart.series;
     const arrX: any[] = [];
     const arrY: any[] = [];
@@ -415,6 +422,10 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
     this.chart.redraw();
   }
   chooseR() {
+
+    if (this.chart.series === undefined) {
+      this.onClick();
+  }
     const series = this.chart.series;
     const arrX: any[] = [];
     const arrY: any[] = [];

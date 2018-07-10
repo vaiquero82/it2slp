@@ -21,7 +21,8 @@ import {MatButtonModule,
         MatCardModule,
         MatNativeDateModule,
         MatGridListModule,
-        MatTableModule
+        MatTableModule,
+        MatProgressSpinnerModule
         } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
@@ -79,6 +80,7 @@ export declare let require: any;
     MatMenuModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
     AmazingTimePickerModule,
     MatGridListModule,
     MatTableModule,
