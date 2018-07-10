@@ -1,18 +1,16 @@
 <div class="container">t
   <div class="tasklistContainer" *ngIf="dataModel.tasklist">
-    <mat-grid-list cols="3">
+    <mat-grid-list cols="10" width="2000px" rowHeight="100px;">
       <div *ngFor="let item of dataModel.tasklist">
-        <mat-grid-tile colspan="2">Auftrag Nr.: {{item.id}}</mat-grid-tile>
-        <mat-grid-tile><i class="material-icons" (click)="toggleVis(item.id)" >keyboard_arrow_down</i></mat-grid-tile>
-        <div class="ng-hide" id="{{item.id}}">
-          <mat-grid-tile rowspan="1">Uhrzeit:</mat-grid-tile>
-          <mat-grid-tile rowspan="1">{{item.time}}</mat-grid-tile>
-          <mat-grid-tile rowspan="1">Status wechseln</mat-grid-tile>
-          <mat-grid-tile rowspan="1">Auftrag:</mat-grid-tile>
-          <mat-grid-tile rowspan="1">{{item.task}}</mat-grid-tile>
-          <mat-grid-tile rowspan="2">ksdfp  </mat-grid-tile>
-          <mat-grid-tile rowspan="1">Status:</mat-grid-tile>
-          <mat-grid-tile rowspan="1">{{item.done}}</mat-grid-tile>
+        <mat-grid-tile colspan="9">Auftrag Nr.: {{item.id}}</mat-grid-tile>
+        <mat-grid-tile><i class="material-icons" (click)="toggleVis(item)" >{{item.display}}</i></mat-grid-tile>
+        <div *ngIf='item.display=="keyboard_arrow_down"' id="{{item.id}}">
+          <mat-grid-tile colspan="5" rowspan="1">Uhrzeit:</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">{{item.time}}</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">Auftrag:</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">{{item.task}}</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5">Status:</mat-grid-tile>
+          <mat-grid-tile rowspan="1" colspan="5"><i class="material-icons" (click)="changeStateL(item)">keyboard_arrow_left</i><i class="material-icons">{{item.done}}</i><i class="material-icons" (click)="changeStateR(item)">keyboard_arrow_right</i></mat-grid-tile>
         </div>
 
       </div>

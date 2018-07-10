@@ -12,14 +12,24 @@ export class EngineerService {
     datetime: new Date(),
     time: '19:30',
     task: 'Kartusche 5 Wechseln',
-    done: false
+    done: 'done',
+    display: 'keyboard_arrow_down'
   };
   t12: ServiceTask = {
     id: 2,
     datetime: Date.now(),
     time: '13:00',
     task: 'Kartusche 4 Wechseln',
-    done: false
+    done: 'error',
+    display: 'keyboard_arrow_down'
+  };
+  t13: ServiceTask = {
+    id: 3,
+    datetime: Date.now(),
+    time: '17:00',
+    task: 'Kartusche 2 Wechseln',
+    done: 'hourglass_empty',
+    display: 'keyboard_arrow_down'
   };
 
   tasklist1 = [this.t11, this.t12];

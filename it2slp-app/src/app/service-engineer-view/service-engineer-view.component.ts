@@ -41,9 +41,31 @@ export class ServiceEngineerViewComponent implements OnInit {
     console.log(this.dataModel);
   }
 
-  toggleVis(id) {
-    console.log(id);
-    const myElement = document.getElementById(id);
-    //myElement.addClass("ng-hide");
+  toggleVis(item) {
+    if (item.display === 'keyboard_arrow_down') {
+      item.display = 'keyboard_arrow_up';
+    } else {
+      item.display = 'keyboard_arrow_down';
+    }
+  }
+  changeStateR(item) {
+    if (item.done === 'error') {
+      item.done = 'hourglass_empty';
+    } else if (item.done === 'done') {
+      item. done = 'error';
+    } else {
+      item.done = 'done';
+    }
+  }
+  changeStateL(item) {
+    console.log(item.done);
+    if (item.done === 'error') {
+      item.done = 'done';
+      console.log(item.done);
+    } else if (item.done === 'done') {
+      item. done = 'hourglass_empty';
+    } else {
+      item.done = 'error';
+    }
   }
 }
