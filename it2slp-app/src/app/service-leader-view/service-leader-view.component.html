@@ -74,19 +74,27 @@
     </mat-grid-tile>
   </mat-grid-list>*-->
 
+  <div class="mainContainer">
+    <div class="row-container fullwidth">
+      <div class="column-container">
+        <div class="item colorborder">Schmierzeittpunkte</div>
+        <div class="item colorborder"></div>
+      </div>
+      <div class="column-container">
+          <div class="item colorborder">Füllstand über die Zeit</div>
+          <div class="item colorborder"><mainview class="main"></mainview></div>
+      </div>
+      <div class="column-container">
+          <div class="item colorborder">Füllstand</div>
+          <div class="gaugeContainer">
+            <app-s-gauge class="gauge-item"></app-s-gauge>
+            <app-s-gauge class="gauge-item"></app-s-gauge>
+            <app-s-gauge class="gauge-item"></app-s-gauge>
+          </div>
+      </div>
+    </div>
 
-  <mat-grid-list cols="24" rowHeight="75px">
-      <mat-grid-tile colspan="1" rowspan="7"><!-- Leere Spalte fuer die Optik --></mat-grid-tile>
-      <mat-grid-tile colspan="9" rowspan="1" background='red'><h3>Schmierzeitpunkte</h3></mat-grid-tile>
-      <!-- <mat-grid-tile colspan="9" rowspan="6" background='red'><google-chart [data]="timelineChartData"></google-chart></mat-grid-tile> -->
 
-      <mat-grid-tile colspan="9" rowspan="1" background='red'><h3>Füllstand über die Zeit</h3></mat-grid-tile>
-          <mainview ></mainview>
+  </div>
 
-      <mat-grid-tile colspan="4" rowspan="1" background='red'><h3>Füllstand</h3></mat-grid-tile>
 
-      <!-- <mat-grid-tile colspan="2" rowspan="2"><google-chart #cchart class="gauge" [data]="gaugeChartDataX"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartDataY"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="2" rowspan="2"><google-chart class="gauge" [data]="gaugeChartDataRundtisch"></google-chart></mat-grid-tile>
-      <mat-grid-tile colspan="1" rowspan="7"><!-- Leere Spalte fuer die Optik </mat-grid-tile>-->
-    </mat-grid-list> -->

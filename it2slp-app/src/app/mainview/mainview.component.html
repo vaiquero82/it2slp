@@ -1,13 +1,14 @@
-<mat-toolbar color="basic">
-<button mat-button class="btn" (click)="chooseX()">Kartusche xAxis</button>
-<button mat-button class="btn" (click)="chooseY()">Kartusche yAxis</button>
-<button mat-button class="btn" (click)="chooseR()">Kartusche Rundtisch</button>
-<button mat-button class="btn" (click)="chooseAll()">Kartusche All</button>
-</mat-toolbar>
+
 
 
 
 <div class="chartContainertToLoad">
+    <mat-toolbar color="basic">
+        <button mat-button class="btn" (click)="chooseX()">Kartusche xAxis</button>
+        <button mat-button class="btn" (click)="chooseY()">Kartusche yAxis</button>
+        <button mat-button class="btn" (click)="chooseR()">Kartusche Rundtisch</button>
+        <button mat-button class="btn" (click)="chooseAll()">Kartusche All</button>
+    </mat-toolbar>
   <div class="chartStyle" #chartTarget>
     <mat-progress-spinner
         class="example-margin"
@@ -16,4 +17,3 @@
     </mat-progress-spinner>
   </div>
 </div>
-

@@ -51,15 +51,22 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    this.loading = true;
-    console.log('Loading');
+    this.loading = false;
     this.getAllData();
-    setTimeout(this.onClick.bind(this), 1500);
+    setTimeout(this.onClick.bind(this), 500);
   }
 
   onClick() {
-    console.log('onclick()', this.dataSchmierstelleLinearAchseX[0]);
-    const dateObj = this.dataSchmierstelleLinearAchseX[0]['datum'];
+   // console.log('onclick()', this.dataSchmierstelleLinearAchseX[0]);
+    const dateObj: Datetime = {
+      day: 12,
+      month: 12,
+      year: 1982,
+      hour: 22,
+      minute: 23,
+      second: 55,
+    };
+     // this.dataSchmierstelleLinearAchseX[0]['datum'];
       const options: Highcharts.Options = {
       credits: {
         enabled: false
@@ -212,7 +219,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       const s = this.dataService.getDataY();
       const t = this.dataService.getDataRundtisch();
       forkJoin([f, s, t]).subscribe(results => {
-        this.sleep(1000);
+        // this.sleep(1000);
 
         this.dataSchmierstelleLinearAchseX = results[0];
         this.dataSchmierstelleLinearAchseY = results[1];

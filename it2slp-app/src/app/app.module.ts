@@ -40,8 +40,20 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { LineChartXAxisComponent } from './charts/line-chart-x-axis/line-chart-x-axis.component';
 import { LineChartYAxisComponent } from './charts/line-chart-y-axis/line-chart-y-axis.component';
 import { LineChartRundtischComponent } from './charts/line-chart-rundtisch/line-chart-rundtisch.component';
+import { ChartModule } from 'angular2-highcharts';
+import * as highcharts from 'highcharts';
 
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
+import { SGaugeComponent } from './charts/s-gauge/s-gauge.component';
 
+export function highchartsfactory() {
+  const hc = require('highcharts');
+  const hcm = require('highcharts/highcharts-more');
+  const sg = require('highcharts/modules/solid-gauge');
+  hcm(hc);
+  sg(hc);
+  return hc;
+}
 
 export declare let require: any;
 // const AWS = require('aws-sdk/dist/aws-sdk-react-native');
@@ -59,10 +71,12 @@ export declare let require: any;
     ServiceEngineerViewComponent,
     LineChartXAxisComponent,
     LineChartYAxisComponent,
-    LineChartRundtischComponent
+    LineChartRundtischComponent,
+    SGaugeComponent
   ],
   imports: [
     BrowserModule,
+    ChartModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
@@ -88,7 +102,10 @@ export declare let require: any;
     BrowserModule,
     FlexLayoutModule
   ],
-  providers: [
+  providers: [{
+    provide: HighchartsStatic,
+    useFactory: highchartsfactory
+   },
     HttpClientModule
   ],
 

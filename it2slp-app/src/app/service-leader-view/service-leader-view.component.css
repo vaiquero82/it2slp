@@ -3,11 +3,33 @@
   flex-direction: row;
 }
 
+.mainContainer {
+}
+
+.gaugeContainer {
+  width: 30vw;
+  height: 20vh;
+
+}
+
+.gauge-item {
+  margin: 2rem;
+}
+
+.fullwidth {
+  width: 100%;
+  justify-content: space-evenly;
+}
 .line-chart-style{
   width: 25%;
   height:auto;
 }
 
+.main {
+  width: 30vw;
+  height: 20vh;
+  background-color: red;
+}
 .buttonRaised {
   width: 14rem;
   height: 2.5rem;
@@ -109,3 +131,8 @@ input.timepicker {
   background-color: beige;
 }
 
+
+.colorborder{
+  background-color: steelblue;
+  border: 1px solid red;
+}
