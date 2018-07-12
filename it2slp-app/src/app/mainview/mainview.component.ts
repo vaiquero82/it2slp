@@ -141,6 +141,12 @@ this.getPrediction(1);
             color: '#ffffff'
           },
         },
+        plotLines: [{
+          color: 'red', // Color value
+          dashStyle: 'solid', // Style of the plot line. Default to solid
+          value: 30, // Value of where the line will appear
+          width: 3 // Width of the line    
+        }],
         plotBands: [{ // Light air
           from: 0,
           to: 33,
