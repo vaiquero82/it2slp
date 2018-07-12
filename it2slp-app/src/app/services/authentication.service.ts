@@ -26,7 +26,7 @@ export class AuthenticationService {
       this.router.navigate(['./serviceengineerview', user]);
       return true;
     }
-    if (user === 'einkauf' && pass === 'einkauf' ) {
+    if (user === 'lieferant' && pass === 'lieferant' ) {
       console.log('Success');
       this.router.navigate(['./purchaseview']);
       return true;

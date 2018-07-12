@@ -19,7 +19,7 @@ export class EngineerService {
     id: 2,
     datetime: Date.now(),
     time: '13:00',
-    task: 'Maschin 1 Kartusche 1 wechseln',
+    task: 'Maschine 1 Kartusche 1 wechseln',
     done: 'error',
     display: 'keyboard_arrow_down'
   };

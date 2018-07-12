@@ -285,7 +285,6 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
       });
 
         } catch (e) {
-      console.log(e);
         }
   }
 

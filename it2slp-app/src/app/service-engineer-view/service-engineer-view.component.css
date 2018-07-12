@@ -24,8 +24,8 @@ mat-grid-tile:hover{
 }
 .map{
   background-color:lightgrey;
-  width:847px;
-  height:555px;
+  width:50vw;
+  height:auto;
   position: fixed;
   right: 100px;
   top: 100px;
