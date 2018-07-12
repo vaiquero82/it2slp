@@ -32,24 +32,25 @@
 
   <div class="mainContainer ">
     <div class="row-container fullwidth">
-      <div class="column-container">
+      <div class="column-container leftOne">
         <div class="item colorborder">Schmierzeitpunkte</div>
         <div class="item colorborder">
           <div class="tableContainer">
+              <div *ngFor="let i of resultDate">
             <div class="rowItem">
               <div class="titleBar">Kartusche X</div>
-              <div *ngIf="resultDataX" class="contentBar">{{resultDataX}}</div>
+              <div *ngIf="i" class="contentBar">{{i | date:'medium'}}</div>
             </div>
-
-            <div class="rowItem">
+      </div>
+            <!-- <div class="rowItem">
               <div class="titleBar">Kartusche Y</div>
-              <div *ngIf="resultDataY" class="contentBar">{{resultDataY}}</div>
+              <div *ngIf="resultData[2]" class="contentBar">{{resultDataY}}</div>
             </div>
 
             <div class="rowItem">
               <div class="titleBar">Kartusche R</div>
-              <div *ngIf="resultDataR" class="contentBar">{{resultDataR}}</div>
-            </div>
+              <div *ngIf="resultData[3]" class="contentBar">{{resultDataR}}</div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -60,9 +61,9 @@
       <div class="column-container">
           <div class="item colorborder">Füllstand</div>
           <div class="gaugeContainer">
-            <app-s-gauge class="gauge-item"></app-s-gauge>
-            <app-s-gauge class="gauge-item"></app-s-gauge>
-            <app-s-gauge class="gauge-item"></app-s-gauge>
+            <app-s-gauge [value]='81.3' [Kartusche]='"Kartusche 1"' class="gauge-item"></app-s-gauge>
+            <app-s-gauge [value]='24.2' [Kartusche]='"Kartusche 2"' class="gauge-item"></app-s-gauge>
+            <app-s-gauge [value]='28.3' [Kartusche]='"Kartusche 3"' class="gauge-item"></app-s-gauge>
           </div>
       </div>
     </div>

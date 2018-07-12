@@ -16,6 +16,8 @@ export class SGaugeComponent implements OnInit {
   @ViewChild('chartTarget') chartTarget: ElementRef;
   loading = false;
   gauge: object;
+  @Input() value;
+  @Input() Kartusche: string;
   constructor() {}
   ngOnInit() {
     this.gauge = {
@@ -79,15 +81,15 @@ export class SGaugeComponent implements OnInit {
         }
       },
       series: [{
-        name: 'Speed',
-        data: [80],
+        name: this.Kartusche,
+        data: [this.value],
         dataLabels: {
-            format: '<div style="text-align:center"><span style="font-size:25px;color:' +
-                ('black') + '">{y}</span><br/>' +
-                   '<span style="font-size:12px;color:silver">km/h</span></div>'
+            format: '<div style="text-align:center"><span style="font-size:15px;color:' +
+                ('white') + '">{y}%</span><br/>' +
+                   '<span style="font-size:12px;color:silver">' + this.Kartusche + '</span></div>'
         },
         tooltip: {
-            valueSuffix: ' km/h'
+            valueSuffix: ' %'
         }
     }]
     };

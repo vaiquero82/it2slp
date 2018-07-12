@@ -23,9 +23,8 @@ export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
     myDate = new Date();
     timevalue = '19:00';
     data;
-    resultDataX: number;
-    resultDataY: number;
-    resultDataR: number;
+    resultData = [ 1, 1, 1];
+    resultDate = [ new Date(0), new Date(0), new Date(0)];
     dataSchmierstelleLinearAchseX: any = undefined;
     dataSchmierstelleLinearAchseY: any = undefined;
     dataSchmierstelleRundtisch: any = undefined;
@@ -41,42 +40,26 @@ export class ServiceLeaderViewComponent implements OnInit, AfterViewChecked {
 
   constructor(private predictionService: PredictionService, private EngService: EngineerService, private dataService: DataService) {
     this.engineers = EngService.getEngineers();
-    this.getPredictionX();
-    this.getPredictionY();
-    this.getPredictionR();
+    this.predictionService.predictKartuscheX();
+    this.predictionService.predictKartuscheY();
+    this.predictionService.predictRundTisch();
+   for (let i = 0; i < 3; i++) {
+    this.predictionService.bSubject[i].subscribe( data => {
+      this.resultData[i] = Number(data);
+      this.resultData[i] = this.resultData[i] * 1000
+      // convert this (resultData) timestamp to date and bind it to the GUI
+      const time = new Date(0);
+      time.setTime(this.resultData[i]);
+      this.resultDate[i] = time;
+       console.log('resultData from predict', this.resultDate[i]);
+    });
+     
+   }
+
   }
 
    getPredictionX() {
-      this.predictionService.predictKartuscheX();
 
-      this.predictionService.bSubject.subscribe( data => {
-      this.resultDataX = Number(data);
-      // convert this (resultData) timestamp to date and bind it to the GUI
-      const time = new Date(0);
-      time.setTime(this.resultDataX * 1000);
-       console.log('resultData from predict', this.resultDataX);
-    });
-  }
-  getPredictionY() {
-      this.predictionService.predictKartuscheY();
-      this.predictionService.bSubject.subscribe( data => {
-      this.resultDataY = Number(data);
-      // convert this (resultData) timestamp to date and bind it to the GUI
-      const time = new Date(0);
-      time.setTime(this.resultDataY * 1000);
-      console.log('resultData from predict', this.resultDataY);
-    });
-  }
-
-  getPredictionR() {
-      this.predictionService.predictRundTisch();
-      this.predictionService.bSubject.subscribe( data => {
-      this.resultDataR = Number(data);
-      // convert this (resultData) timestamp to date and bind it to the GUI
-      const time = new Date(0);
-      time.setTime(this.resultDataR * 1000);
-       console.log('resultData from predict', this.resultDataR);
-    });
   }
 
   ngOnInit() {

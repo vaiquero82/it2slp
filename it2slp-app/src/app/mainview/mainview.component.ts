@@ -56,7 +56,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   }
 
   getPrediction(number: number) {
-
+/*
     if (number === 1) {
       this.predictionService.predictKartuscheX();
     } else if (number === 2) {
@@ -65,13 +65,13 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
         this.predictionService.predictRundTisch();
     }
 
-    this.predictionService.bSubject.subscribe( data => {
+    this.predictionService.bSubject[1].subscribe( data => {
       this.resultData = Number(data);
       // convert this (resultData) timestamp to date and bind it to the GUI
       const time = new Date(0);
       time.setTime(this.resultData * 1000);
        console.log('resultData from predict', time, this.resultData);
-    });
+    });*/
   }
 
   ngOnInit() {
