@@ -1,7 +1,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="row-container container-sub-top">
-<mat-form-field class="item" >
+<mat-form-field class="item ff" >
     <mat-select placeholder="send Engineer" [(value)]="selected">
       <mat-option >None</mat-option>
       <mat-option *ngFor="let engineer of engineers" [value]="engineer">
@@ -9,25 +9,33 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field class="item" >
+  <mat-form-field class="item ff" >
     <mat-select placeholder="Kartusche" [(value)]="selectedKartusche">
         <mat-option [value]="1">Kartusche 1</mat-option>
         <mat-option [value]="2">Kartusche 2</mat-option>
         <mat-option [value]="3">Kartusche 3</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="item" >
-      <div class="row-container">
+    <mat-form-field class="item ff" >
+      
       <input matInput [matDatepicker]="picker" date="true" time="true" placeholder="Choose a date" [(ngModel)]="myDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      </div>
-      <div>
-        <input class="timepicker"atp-time-picker [(ngModel)]="timevalue"/>
+
+  </mat-form-field>   
+      <div style="width: 4rem;">
+          Uhrzeit: <input class="timepicker" atp-time-picker [(ngModel)]="timevalue"/>
       </div>
 
-  </mat-form-field>
   <button mat-raised-button class="buttonRaised" color="primary" *ngIf="selected" (click)="doMail(selected)">Kartusche wechseln</button>
+  <mat-form-field class="item ff" style="margin-left: 5rem; background-color: steelblue;">
+      <mat-select placeholder="Maschine">
+          <mat-option [value]="1">Maschine 1</mat-option>
+          <mat-option [value]="2">Maschine 2</mat-option>
+          <mat-option [value]="3">Maschine 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+
 </div>
 
   <div class="mainContainer ">

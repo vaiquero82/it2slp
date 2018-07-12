@@ -56,6 +56,9 @@
   margin: 0.5rem;
 }
 
+.ff {
+  height: 90%;
+}
 input.timepicker {
   background-color: transparent;
   border: 0px solid;
