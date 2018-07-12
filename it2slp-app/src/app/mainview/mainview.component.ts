@@ -100,7 +100,7 @@ this.getPrediction(1);
       },
       chart: {
         type: 'spline',
-        backgroundColor: '#D3D3D3'
+        backgroundColor: 'transparent'
 
       },
       title: {
@@ -119,6 +119,9 @@ this.getPrediction(1);
           to: 1434830400000 // End of the plot band
         }],
         labels: {
+          style: {
+            color: '#ffffff'
+          },
           overflow: 'justify',
           enabled: true
         }
@@ -133,12 +136,15 @@ this.getPrediction(1);
         minorGridLineWidth: 0,
         gridLineWidth: 0,
         alternateGridColor: null,
+        labels: {
+          style: {
+            color: '#ffffff'
+          },
+        },
         plotBands: [{ // Light air
           from: 0,
           to: 33,
-          color: 'rgba(255, 255, 255, 1)',
-          borderColor: 'red',
-          borderWidth: 2,
+          color: 'transparent',
           zIndex: 1,
           label: {
             text: 'Leer',
@@ -149,27 +155,23 @@ this.getPrediction(1);
         }, { // Gentle breeze
           from: 34,
           to: 67,
-          color: 'rgba(255, 255, 255, 1)',
+          color: 'transparent',
           zIndex: 1,
-          borderColor: 'yellow',
-          borderWidth: 2,
           label: {
             text: 'Mittel',
             style: {
-              color: '#606060'
+              color: '#ffffff'
             }
           }
         }, { // Gentle breeze
           from: 68,
           to: 100,
-          color: 'rgba(255, 255, 255, 1)',
+          color: 'transparent',
           zIndex: 1,
-          borderColor: 'green',
-          borderWidth: 2,
           label: {
             text: 'Voll',
             style: {
-              color: '#606060'
+              color: '#ffffff'
             }
           }
         }]
@@ -200,7 +202,7 @@ this.getPrediction(1);
           x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
           y: 2,
         }], // this.dataSchmierstelleLinearAchseXCurrenttanklevel,
-        color: 'rgba(128, 0, 128, 1)'
+        color: 'rgba(255, 255, 255, 1)'
       }, {
         name: 'Kartusche 2',
         data: [{
@@ -214,7 +216,7 @@ this.getPrediction(1);
           x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
           y: 2,
         }], // this.dataSchmierstelleRundtischCurrenttanklevel,
-        color: 'rgba(0, 0, 0, 1)'
+        color: 'rgba(100, 10, 100, 1)'
       }],
       navigation: {
         menuItemStyle: {
