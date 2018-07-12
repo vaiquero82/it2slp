@@ -3,6 +3,23 @@
   flex-direction: row;
 }
 
+.rowItem {
+  background-color: lightgray;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.titleBar{
+  font-size: 1rem !important;
+  background-color: gray;
+  color: black;
+  border: 1px solid black;
+}
+
+.contentBar{
+  font-size: 1.2rem;
+  color: steelblue;
+}
 .mainContainer {
 }
 
