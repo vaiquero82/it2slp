@@ -143,9 +143,15 @@ this.getPrediction(1);
         },
         plotLines: [{
           color: 'red', // Color value
-          dashStyle: 'solid', // Style of the plot line. Default to solid
+          dashStyle: 'Dash', // Style of the plot line. Default to solid
           value: 30, // Value of where the line will appear
-          width: 3 // Width of the line    
+          width: 3 // Width of the line
+        },
+        {
+          color: 'yellow', // Color value
+          dashStyle: 'Dash', // Style of the plot line. Default to solid
+          value: 60, // Value of where the line will appear
+          width: 3 // Width of the line
         }],
         plotBands: [{ // Light air
           from: 0,
@@ -155,7 +161,7 @@ this.getPrediction(1);
           label: {
             text: 'Leer',
             style: {
-              color: '#600000'
+              color: '#ffffff'
             }
           }
         }, { // Gentle breeze
