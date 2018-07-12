@@ -138,7 +138,7 @@ this.getPrediction(1);
           to: 33,
           color: 'rgba(255, 255, 255, 1)',
           borderColor: 'red',
-          borderWidth: '2px',
+          borderWidth: 2,
           zIndex: 1,
           label: {
             text: 'Leer',
@@ -152,7 +152,7 @@ this.getPrediction(1);
           color: 'rgba(255, 255, 255, 1)',
           zIndex: 1,
           borderColor: 'yellow',
-          borderWidth: '2px',
+          borderWidth: 2,
           label: {
             text: 'Mittel',
             style: {
@@ -165,7 +165,7 @@ this.getPrediction(1);
           color: 'rgba(255, 255, 255, 1)',
           zIndex: 1,
           borderColor: 'green',
-          borderWidth: '2px',
+          borderWidth: 2,
           label: {
             text: 'Voll',
             style: {
