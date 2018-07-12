@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="row-container container-sub-top">
 <mat-form-field class="item" >
@@ -37,17 +38,17 @@
           <div class="tableContainer">
             <div class="rowItem">
               <div class="titleBar">Kartusche X</div>
-              <div class="contentBar">12.21.3133 12:35</div>
+              <div *ngIf="resultDataX" class="contentBar">{{resultDataX}}</div>
             </div>
 
             <div class="rowItem">
               <div class="titleBar">Kartusche Y</div>
-              <div class="contentBar">12.21.3133 12:35</div>
+              <div *ngIf="resultDataY" class="contentBar">{{resultDataY}}</div>
             </div>
 
             <div class="rowItem">
               <div class="titleBar">Kartusche R</div>
-              <div class="contentBar">12.21.3133 12:35</div>
+              <div *ngIf="resultDataR" class="contentBar">{{resultDataR}}</div>
             </div>
           </div>
         </div>

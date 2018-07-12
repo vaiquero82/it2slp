@@ -49,7 +49,7 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   constructor(private dataService: DataService, private predictionService: PredictionService) {
 // import entire SDK
 // const inspect = require('util-inspect');
-this.getPrediction(1);
+// this.getPrediction(1);
 
 
 
