@@ -99,8 +99,8 @@ this.getPrediction(1);
         enabled: false
       },
       chart: {
+        backgroundColor: '#D3D3D3',
         type: 'spline',
-        backgroundColor: 'lightgrey'
       },
       title: {
         text: null
