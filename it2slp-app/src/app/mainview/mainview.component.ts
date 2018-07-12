@@ -11,6 +11,8 @@ import { DataService } from '../services/data.service';
 import { Datetime } from '../services/datetime';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
+import { PredictionService } from '../services/secret/prediction.service';
+
 
 
 
@@ -39,15 +41,37 @@ export class MainviewComponent implements OnInit, AfterViewChecked {
   dataSchmierstelleLinearAchseYCurrenttanklevel = [];
   dataSchmierstelleRundtischCurrenttanklevel = [];
 
+  resultData: number;
 
 
 
-  constructor(private dataService: DataService) {
+
+  constructor(private dataService: DataService, private predictionService: PredictionService) {
 // import entire SDK
 // const inspect = require('util-inspect');
+this.getPrediction(1);
 
 
 
+  }
+
+  getPrediction(number: number) {
+
+    if (number === 1) {
+      this.predictionService.predictKartuscheX();
+    } else if (number === 2) {
+      this.predictionService.predictKartuscheY();
+    } else {
+        this.predictionService.predictRundTisch();
+    }
+
+    this.predictionService.bSubject.subscribe( data => {
+      this.resultData = Number(data);
+      // convert this (resultData) timestamp to date and bind it to the GUI
+      const time = new Date(0);
+      time.setTime(this.resultData * 1000);
+       console.log('resultData from predict', time, this.resultData);
+    });
   }
 
   ngOnInit() {
