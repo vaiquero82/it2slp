@@ -8,7 +8,7 @@
 
 # dependencies
 /node_modules
-
+/src/app/services/secret
 # IDEs and editors
 /.idea
 .project
