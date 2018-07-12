@@ -100,7 +100,8 @@ this.getPrediction(1);
       },
       chart: {
         type: 'spline',
-        backgroundColor: 'lightgrey'
+        backgroundColor: '#D3D3D3'
+
       },
       title: {
         text: null
