@@ -99,7 +99,8 @@ this.getPrediction(1);
         enabled: false
       },
       chart: {
-        type: 'spline'
+        type: 'spline',
+        backgroundColor: 'lightgrey'
       },
       title: {
         text: null
@@ -134,21 +135,25 @@ this.getPrediction(1);
         plotBands: [{ // Light air
           from: 0,
           to: 33,
-          color: 'rgba(255, 0, 0, 1)',
+          color: 'rgba(255, 255, 255, 1)',
+          borderColor: 'red',
+          borderWidth: '2px',
           zIndex: 1,
           label: {
-            text: 'Bad',
+            text: 'Leer',
             style: {
-              color: '#606060'
+              color: '#600000'
             }
           }
         }, { // Gentle breeze
           from: 34,
           to: 67,
-          color: 'rgba(255, 255, 0, 1)',
+          color: 'rgba(255, 255, 255, 1)',
           zIndex: 1,
+          borderColor: 'yellow',
+          borderWidth: '2px',
           label: {
-            text: 'Medium',
+            text: 'Mittel',
             style: {
               color: '#606060'
             }
@@ -156,10 +161,12 @@ this.getPrediction(1);
         }, { // Gentle breeze
           from: 68,
           to: 100,
-          color: 'rgba(0, 136, 0, 1)',
+          color: 'rgba(255, 255, 255, 1)',
           zIndex: 1,
+          borderColor: 'green',
+          borderWidth: '2px',
           label: {
-            text: 'Strong',
+            text: 'Voll',
             style: {
               color: '#606060'
             }
@@ -187,21 +194,21 @@ this.getPrediction(1);
         }
       },
       series: [{
-        name: 'X',
+        name: 'Kartusche 1',
         data: [{
           x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
           y: 2,
         }], // this.dataSchmierstelleLinearAchseXCurrenttanklevel,
         color: 'rgba(128, 0, 128, 1)'
       }, {
-        name: 'Y',
+        name: 'Kartusche 2',
         data: [{
           x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
           y: 2,
         }], // this.dataSchmierstelleLinearAchseYCurrenttanklevel,
         color: 'rgba(61, 124, 183, 1)'
       }, {
-        name: 'Rundtisch',
+        name: 'Kartusche 3',
         data: [{
           x: Date.UTC(dateObj.year, dateObj.month, dateObj.day, dateObj.hour, dateObj.minute, dateObj.second),
           y: 2,

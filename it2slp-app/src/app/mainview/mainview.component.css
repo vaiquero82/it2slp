@@ -1,7 +1,8 @@
 .mainviewContainer {
   height: 90vh;
   width: 100vw;
-  background-color: #ffffff;
+
+
  /* background-image: url('../../assets/chip-chipset-closeup-40879.jpg');
   background-size: cover;*/
 }
@@ -9,7 +10,10 @@
 .btn {
   margin: 1rem;
 }
+button{
+background-color: darkgrey;
 
+}
 .chartContainertToLoad {
   display: flex;
   flex-direction: column;
@@ -17,9 +21,12 @@
   height: auto;
   /* justify-content: center; */
   align-items: center;
+
 }
 
 .chartStyle {
   width: 100%;
   height: auto;
+
 }
+

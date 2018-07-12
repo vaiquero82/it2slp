@@ -29,55 +29,10 @@
   <button mat-raised-button class="buttonRaised" color="primary" *ngIf="selected" (click)="doMail(selected)">Kartusche wechseln</button>
 </div>
 
-<!--Charts-->
-<!--<mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile >
-      Chart 1
-      <google-chart [data]="lineChart"></google-chart>
-    </mat-grid-tile>
-
-    <mat-grid-tile >
-      Chart 2
-      <google-chart [data]="timelineChartData"></google-chart>
-    </mat-grid-tile>
-
-
-    <mat-grid-tile>
-    <div class="column-container"> Chart 3
-      <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
-      <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
-      </div>
-
-      <div class="row-container container">
-        <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
-        <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
-      </div>
-
-      <div class="row-container container">
-          <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
-          <google-chart class="gauge" [data]="gaugeChartData"></google-chart>
-      </div>
-    </mat-grid-tile>
-
-
-</mat-grid-list>
-
-
-
-<mat-grid-list cols="24" rowHeight="100px">
-    <mat-grid-tile
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-      {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>*-->
-
-  <div class="mainContainer">
+  <div class="mainContainer ">
     <div class="row-container fullwidth">
       <div class="column-container">
-        <div class="item colorborder">Schmierzeittpunkte</div>
+        <div class="item colorborder">Schmierzeitpunkte</div>
         <div class="item colorborder"></div>
       </div>
       <div class="column-container">
